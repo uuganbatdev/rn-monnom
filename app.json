@@ -1,0 +1,12 @@
+{
+  "name": "rn-monnom",
+  "displayName": "rn-monnom",
+  "expo": {
+    "name": "rn-monnom",
+    "slug": "rn-monnom",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
