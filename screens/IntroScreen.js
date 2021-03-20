@@ -8,7 +8,7 @@ export default function IntroScreen({ navigation }) {
 	return (
 			<View style={styles.container}>
 				<ImageBackground style={styles.bgImg} source={require('../assets/intro-bg.png')}>
-					<AuthHeaderWithLogo text={'Аудио ном, Дуу хөгжим, Подкаст'}/>
+					<AuthHeaderWithLogo />
 					<TouchableOpacity style={styles.btn} onPress={() => navigation.push('tutorial', { tutorialPage: 1 })}>
 						<Text style={styles.btnText} >
 							Эxлэх

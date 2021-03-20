@@ -152,7 +152,7 @@ let styles = StyleSheet.create({
 	mainText: {
 		color: 'white',
 		textAlign: 'center',
-		width: 280,
+		width: 350,
 		marginTop: 20
 	},
 

@@ -93,7 +93,7 @@ let TabsScreen = () => {
 export default RootStackScreen = () => {
 	return (
 		<RootStack.Navigator headerMode='none'>
-			<RootStack.Screen name='auth' component={AuthStackScreen} />
+			<RootStack.Screen name='mainApp' component={TabsScreen} />
 		</RootStack.Navigator>
 	)
 }

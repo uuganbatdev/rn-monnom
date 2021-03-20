@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 
-export default function AuthButton() {
+export default function AuthButton({ onPress }) {
 
 	return (
-			<View style={styles.container}>
-				<Text>
-					AuthButton
-				</Text>
-
-			</View>
+		<TouchableOpacity style={styles.btn} onPress={onPress}>
+			<Text  style={styles.text} >
+				Бүртгүүлэх
+			</Text>
+		</TouchableOpacity>
 	)
 
 }
 
 let styles = StyleSheet.create({
-	container: {
-		flex: 1,
+	btn: {
+		width: 300,
+		backgroundColor: 'white',
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgb( 241,206,62 )',
-	}
+		height: 40,
+		borderRadius: 4,
+		marginVertical: 8,
+	},	
+	
+	text: {
+		color: 'black'
+	},
+	
 })

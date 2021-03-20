@@ -4,21 +4,18 @@ import PodcastNavScreen from '../components/PodcastNavScreen.js';
 import Header from '../components/Header.js';
 import LibraryNavScreen from '../components/LibraryNavScreen.js';
 import LiveNavScreen from '../components/LiveNavScreen.js';
+import { createStackNavigator } from '@react-navigation/stack';
 
+let HomeTab = createStackNavigator();
 
 export default function HomeScreen() {
 
 	return (
-			<View style={styles.container}>
-				<Text>
-					HomeScreen
-				</Text>
-				<PodcastNavScreen/>
-				<Header/>
-				<LibraryNavScreen/>
-				<LiveNavScreen/>
-
-			</View>
+			<HomeTab.Navigator headerMode='none' style={styles.container}>
+				<HomeTab.Screen name='libraryStack' component={LibraryNavScreen} />
+				<HomeTab.Screen name='podcastStack' component={PodcastNavScreen} />
+				<HomeTab.Screen name='liveStack' component={LibraryNavScreen} />
+			</HomeTab.Navigator>
 	)
 
 }
