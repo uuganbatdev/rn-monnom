@@ -6,9 +6,6 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 
 export default function AuthDateScreen({ navigation }) {
-	let handleContinue = () => {
-		navigation.push('checkCodeFromPhoneNumber');
-	}
 	let [ date, setDate ] = useState({
 		year: new Date().getFullYear(),
 		month: new Date().getMonth() + 1,
@@ -27,6 +24,10 @@ export default function AuthDateScreen({ navigation }) {
 			month: newDate.getMonth() + 1,
 			date: newDate.getDate(),
 		})
+	}
+
+	let handleContinue = () => {
+		navigation.push('authGenderScreen');
 	}
 
 	return (

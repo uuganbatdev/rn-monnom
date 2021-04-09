@@ -8,6 +8,7 @@ import AuthPhoneNumberScreen from './screens/authScreens/AuthPhoneNumberScreen.j
 import AuthDateScreen from './screens/authScreens/AuthDateScreen.js';
 import AuthEmail from './screens/authScreens/AuthEmail.js';
 import AuthPasswordScreen from './screens/authScreens/AuthPasswordScreen.js';
+import AuthGenderScreen from './screens/authScreens/AuthGenderScreen.js';
 import IntroScreen from './screens/noFunctionalityScreens/IntroScreen.js';
 import TutorialScreenOne from './screens/noFunctionalityScreens/TutorialScreenOne.js';
 import TutorialScreenTwo from './screens/noFunctionalityScreens/TutorialScreenTwo.js';
@@ -48,6 +49,7 @@ let AuthStackScreen = () => {
 			<AuthStack.Screen name='authEmail' component={AuthEmail} />
 			<AuthStack.Screen name='authPasswordScreen' component={AuthPasswordScreen} />
 			<AuthStack.Screen name='authDateScreen' component={AuthDateScreen} />
+			<AuthStack.Screen name='authGenderScreen' component={AuthGenderScreen} />
 			<AuthStack.Screen name='getCodeFromPhoneNumber' component={GetCodeFromPhoneNumberScreen} />
 			<AuthStack.Screen name='checkCodeFromPhoneNumber' component={CheckCodeFromPhoneNumberScreen} />
 			<AuthStack.Screen name='resetPassword' component={ResetPasswordScreen} />
