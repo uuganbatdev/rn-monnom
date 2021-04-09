@@ -2,35 +2,65 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet,  Image, TouchableOpacity, KeyboardAvoidingView, Text, View } from 'react-native';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 
 export default function AuthDateScreen({ navigation }) {
 	let handleContinue = () => {
 		navigation.push('checkCodeFromPhoneNumber');
 	}
+	let [ date, setDate ] = useState({
+		year: new Date().getFullYear(),
+		month: new Date().getMonth() + 1,
+		date: new Date().getDate(),
+	})
+	let [ showDatePicker, setShowDatePicker ] = useState(false);
+	
+	useEffect(() => {
+		console.log(date)
+	},[date])
+
+	let handleDatePickerChange = (newDate) => {
+		setShowDatePicker(false);
+		setDate({
+			year: newDate.getFullYear(),
+			month: newDate.getMonth() + 1,
+			date: newDate.getDate(),
+		})
+	}
 
 	return (
 			<KeyboardAvoidingView behavior={"height"} style={styles.container}>
+			  <DateTimePickerModal
+				isVisible={showDatePicker}
+				mode="date"
+				  date={new Date()}
+				  onConfirm={handleDatePickerChange}
+				  onCancel={() => setShowDatePicker(false) }
+			  />
 				<FancyAuthHeader/>
 				<Image style={styles.logoText} source={require('../../assets/logo-text-black.png')} />
 				<View>
 					<Text style={styles.heading}>Төрсөн өн сар өдөр өө оруулна уу.</Text>
 				</View>
 				<View style={styles.formContainer} >
-					<TouchableOpacity style={styles.datePicker} >
+					<TouchableOpacity
+						style={styles.datePicker}
+						onPress={() => setShowDatePicker(true)}
+					>
 						<View style={styles.year}>
 							<Text style={styles.dateText}>
-								2000 оны
+								{date.year} оны
 							</Text>
 						</View>
 						<View style={styles.month} >
 							<Text style={styles.dateText}>
-								3 сар
+								{date.month} сар
 							</Text>
 						</View>
-						<View style={styles.day}>
+						<View style={styles.date}>
 							<Text style={styles.dateText} >
-								10
+								{date.date}
 							</Text>
 						</View>
 					</TouchableOpacity>
@@ -71,7 +101,7 @@ let styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 
-	day: {
+	date: {
 		flex: 1,
 		alignItems: 'flex-end'
 	},
