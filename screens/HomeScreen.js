@@ -8,14 +8,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 let HomeTab = createStackNavigator();
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
+
 
 	return (
-			<HomeTab.Navigator headerMode='none' style={styles.container}>
-				<HomeTab.Screen name='libraryStack' component={LibraryNavScreen} />
+		<View style={styles.container} >
+			<Header/>
+			<HomeTab.Navigator headerMode='none' style={styles.innerContainer}>
 				<HomeTab.Screen name='podcastStack' component={PodcastNavScreen} />
-				<HomeTab.Screen name='liveStack' component={LibraryNavScreen} />
+				<HomeTab.Screen name='libraryStack' component={LibraryNavScreen} />
+				<HomeTab.Screen name='liveStack' component={LiveNavScreen} />
 			</HomeTab.Navigator>
+		</View>
 	)
 
 }
@@ -23,8 +27,12 @@ export default function HomeScreen() {
 let styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: 'rgb( 252,136,46 )',
+	},
+
+	innerContainer: {
+		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgb( 252,136,46 )',
 	}
 })

@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
 import { NavigationContainer } from '@react-navigation/native';
 import Constants from 'expo-constants';
-import RootStackScreen from './navigationManage.js';
-import GlobalContextProvider from './contexts';
+import RootStackScreen from './navigationManager';
+import GlobalContextProvider from './contexts/GlobalContext';
 
 
 export default function App() {

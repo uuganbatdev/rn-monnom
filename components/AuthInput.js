@@ -3,6 +3,7 @@ import { StyleSheet, TextInput, TouchableOpacity, Text, View, Image } from 'reac
 
 export default function AuthInput({ placeholder, iconpath, setState, state, phoneNumber, hidden, type, maxLength }) {
 	let [ hiddenVal, setHiddenVal ] = useState(hidden);
+
 	return (
 			<View style={styles.container}>
 				<View style={styles.iconContainer}>
@@ -12,7 +13,6 @@ export default function AuthInput({ placeholder, iconpath, setState, state, phon
 					style={styles.input}
 					autoCorrect={false}
 					placeholder={placeholder}
-					placeholderTextColor={'rgba(255,255,255,0.4)'}
 					keyboardType={type}
 					onChangeText={e => setState(e)}
 					maxLength={maxLength}
@@ -35,11 +35,19 @@ let styles = StyleSheet.create({
 	container: {
 		width: 300,
 		padding: 5,
-		borderRadius: 4,
+		borderRadius: 15,
 		alignItems: 'center',
-		backgroundColor: 'rgba(255,255,255,0.3)',
+		backgroundColor: 'white',
 		flexDirection: 'row',
-		marginVertical:  8
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 11.95,
+
+		elevation: 5,
 	},
 	
 	iconContainer: {
@@ -56,9 +64,10 @@ let styles = StyleSheet.create({
 	},
 	
 	input: {
+		paddingLeft: 10,
 		width: '80%',
 		height: 30 ,
-		color: 'white'
+		color: 'black'
 	},
 	
 })

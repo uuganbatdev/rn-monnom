@@ -1,13 +1,18 @@
-import React from 'react';
-import SignInScreen from './screens/SignInScreen.js';
-import ResetPasswordScreen from './screens/ResetPasswordScreen.js';
-import SignUpScreen from './screens/SignUpScreen.js';
-import GetCodeFromPhoneNumberScreen from './screens/GetCodeFromPhoneNumberScreen.js';
-import CheckCodeFromPhoneNumberScreen from './screens/CheckCodeFromPhoneNumberScreen.js';
-import AuthPhoneNumberScreen from './screens/AuthPhoneNumberScreen.js';
-import IntroScreen from './screens/IntroScreen.js';
-import TutorialScreen from './screens/TutorialScreen.js';
-import WelcomeScreen from './screens/WelcomeScreen.js';
+import React, {useEffect} from 'react';
+import SignInScreen from './screens/authScreens/SignInScreen.js';
+import ResetPasswordScreen from './screens/authScreens/ResetPasswordScreen.js';
+import SignUpScreen from './screens/authScreens/SignUpScreen.js';
+import GetCodeFromPhoneNumberScreen from './screens/authScreens/GetCodeFromPhoneNumberScreen.js';
+import CheckCodeFromPhoneNumberScreen from './screens/authScreens/CheckCodeFromPhoneNumberScreen.js';
+import AuthPhoneNumberScreen from './screens/authScreens/AuthPhoneNumberScreen.js';
+import AuthDateScreen from './screens/authScreens/AuthDateScreen.js';
+import AuthEmail from './screens/authScreens/AuthEmail.js';
+import AuthPasswordScreen from './screens/authScreens/AuthPasswordScreen.js';
+import IntroScreen from './screens/noFunctionalityScreens/IntroScreen.js';
+import TutorialScreenOne from './screens/noFunctionalityScreens/TutorialScreenOne.js';
+import TutorialScreenTwo from './screens/noFunctionalityScreens/TutorialScreenTwo.js';
+import TutorialScreenThree from './screens/noFunctionalityScreens/TutorialScreenThree.js';
+import WelcomeScreen from './screens/noFunctionalityScreens/WelcomeScreen.js';
 import SearchScreen from './screens/SearchScreen.js';
 import HomeScreen from './screens/HomeScreen.js';
 import SinglePodcastScreen from './screens/SinglePodcastScreen.js';
@@ -35,9 +40,14 @@ let AuthStackScreen = () => {
 	return (
 		<AuthStack.Navigator headerMode='none'>
 			<AuthStack.Screen name='intro' component={IntroScreen} />
-			<AuthStack.Screen name='tutorial' component={TutorialScreen} />
+			<AuthStack.Screen name='tutorialOne' component={TutorialScreenOne} />
+			<AuthStack.Screen name='tutorialTwo' component={TutorialScreenTwo} />
+			<AuthStack.Screen name='tutorialThree' component={TutorialScreenThree} />
 			<AuthStack.Screen name='signIn' component={SignInScreen} />
 			<AuthStack.Screen name='signUp' component={SignUpScreen} />
+			<AuthStack.Screen name='authEmail' component={AuthEmail} />
+			<AuthStack.Screen name='authPasswordScreen' component={AuthPasswordScreen} />
+			<AuthStack.Screen name='authDateScreen' component={AuthDateScreen} />
 			<AuthStack.Screen name='getCodeFromPhoneNumber' component={GetCodeFromPhoneNumberScreen} />
 			<AuthStack.Screen name='checkCodeFromPhoneNumber' component={CheckCodeFromPhoneNumberScreen} />
 			<AuthStack.Screen name='resetPassword' component={ResetPasswordScreen} />
@@ -79,7 +89,10 @@ let MyLibraryStackScreen = () => {
 	)
 }
 
-let TabsScreen = () => {
+let TabsScreen = ({ navigation }) => {
+	useEffect(() => {
+		navigation.navigate('homeTab');
+	},[])
 	return (
 		<Tabs.Navigator>
 			<Tabs.Screen name='homeTab'  component={HomeStackScreen} />
@@ -90,10 +103,10 @@ let TabsScreen = () => {
 	)
 }
 
-export default RootStackScreen = () => {
+export default RootStackScreen = ({ navigation }) => {
 	return (
 		<RootStack.Navigator headerMode='none'>
-			<RootStack.Screen name='mainApp' component={TabsScreen} />
+			<RootStack.Screen name='mainApp' component={AuthStackScreen} />
 		</RootStack.Navigator>
 	)
 }
