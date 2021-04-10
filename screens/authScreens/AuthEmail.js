@@ -7,7 +7,7 @@ import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 
 export default function AuthEmail({ navigation }) {
 	let handleContinue = () => {
-		navigation.push('authPasswordScreen');
+		navigation.push('authPasswordScreen', { accessingFrom: 'signUp' });
 	}
 
 	return (

@@ -5,9 +5,15 @@ import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 
 
-export default function CheckCodeFromPhoneNumberScreen({ navigation }) {
+export default function CheckCodeFromPhoneNumberScreen({ navigation, route }) {
+	let accessedFrom = route.params.accesingFrom;
+
 	let handleConfirm = () => {
-		navigation.push('authEmail');
+		if (accessedFrom == 'signIn') {
+			navigation.push('authPasswordScreen', { accessingFrom : accessedFrom })
+		} else {
+			navigation.push('authEmail', { accessingFrom: accessedFrom });
+		}
 	}
 
 	let handleSendCodeAgain = () => {

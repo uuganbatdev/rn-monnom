@@ -5,17 +5,16 @@ import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 
 
-export default function SignUpScreen({ navigation }) {
-	let handleSubmit = () => {
-		navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signUp' });
+export default function RequestResetPasswordScreen({ navigation }) {
+	let handleGetCode = () => {
+		navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signIn' });
 	}
 
 	return (
 			<KeyboardAvoidingView behavior={"height"} style={styles.container}>
 				<FancyAuthHeader/>
-				<Image style={styles.logoText} source={require('../../assets/logo-text-black.png')} />
 				<View>
-					<Text style={styles.heading}>Бүртгүүлэх</Text>
+					<Text style={styles.heading}>Нууц үг сэргээx</Text>
 				</View>
 				<View style={styles.formContainer} >
 					<AuthInput
@@ -25,8 +24,8 @@ export default function SignUpScreen({ navigation }) {
 						maxLength={8}
 					/>
 					<AuthButton
-						onPress={handleSubmit}
-						text={'Үргэлжлүүлэx'}
+						onPress={handleGetCode}
+						text={'Код авах'}
 					/>
 				</View>
 						
@@ -49,12 +48,12 @@ let styles = StyleSheet.create({
 	
 	formContainer: {
 		justifyContent: 'space-between',
-		height: 150,
+		height: 120,
 	},
 	
 	heading: {
-		marginTop: 40,
-		marginBottom: 20,
+		marginTop: 80,
+		marginBottom: 40,
 		fontWeight: '200'
 	},
 	

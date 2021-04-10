@@ -5,9 +5,14 @@ import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 
 
-export default function AuthPasswordScreen({ navigation }) {
+export default function AuthPasswordScreen({ navigation, route }) {
+	let accessedFrom = route.params.accessingFrom;
 	let handleContinue = () => {
-		navigation.push('authDateScreen');
+		if ( accessedFrom == 'signUp' ) {
+			navigation.push('authDateScreen');
+		} else {
+			navigation.push('passwordChangedScreen');
+		}
 	}
 
 	return (
@@ -15,7 +20,7 @@ export default function AuthPasswordScreen({ navigation }) {
 				<FancyAuthHeader/>
 				<Image style={styles.logoText} source={require('../../assets/logo-text-black.png')} />
 				<View>
-					<Text style={styles.heading}>Бүртгүүлэх</Text>
+					<Text style={styles.heading}>{accessedFrom == 'signUp' ? 'Бүртгүүлэх': 'Нууц үг шинэчлэx'}</Text>
 				</View>
 				<View style={styles.formContainer} >
 					<View style={styles.inputsContainer} >
@@ -23,16 +28,23 @@ export default function AuthPasswordScreen({ navigation }) {
 							placeholder={'Нууц үг'}
 							iconpath={require('../../assets/privacy.png')}
 							maxLength={8}
+							hidden={true}
 						/>
 						<AuthInput
 							placeholder={'Нууц үг давтах'}
 							iconpath={require('../../assets/privacy.png')}
 							maxLength={8}
+							hidden={true}
 						/>
+					<View style={styles.warning} >
+						<Text style={{...styles.warningText, display: 'flex'}} >
+							Таны оруулсан нууц үг таарахгүй байна.
+						</Text>
+					</View>
 					</View>
 					<AuthButton
 						onPress={handleContinue}
-						text={'Бүртгүүлэx'}
+						text={accessedFrom == 'signUp' ? 'Бүртгүүлэх': 'Нууц үг шинэчлэx'}
 					/>
 				</View>
 						
@@ -53,14 +65,24 @@ let styles = StyleSheet.create({
 		resizeMode: 'contain',
 	},
 	
+	warning: {
+		height: 12,
+		alignSelf: 'flex-start'
+	},
+	
+	warningText: {
+		fontSize: 10,
+		fontWeight: '300',
+		color: 'red'
+	},
 	inputsContainer: {
-		height: '55%',
+		height: '70%',
 		justifyContent: 'space-between',
 	},
 	
 	formContainer: {
 		justifyContent: 'space-between',
-		height: 180,
+		height: 200,
 	},
 	
 	heading: {
