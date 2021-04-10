@@ -6,9 +6,6 @@ import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 
 
 export default function AuthGenderScreen({ navigation }) {
-	let handleSubmit = () => {
-		navigation.push('checkCodeFromPhoneNumber');
-	}
 
 	let [ activeInput, setActiveInput ] = useState(2);
 	let [ gender, setGender ] = useState('female');
@@ -32,6 +29,10 @@ export default function AuthGenderScreen({ navigation }) {
 
 	let handleInputChange = (changeTo) => {
 		setActiveInput(changeTo);
+	}
+
+	let handleContinue = () => {
+		navigation.push('welcome');
 	}
 
 	return (
@@ -70,7 +71,7 @@ export default function AuthGenderScreen({ navigation }) {
 						</TouchableOpacity>
 					</View>
 					<AuthButton
-						onPress={handleSubmit}
+						onPress={handleContinue}
 						text={'Үргэлжлүүлэx'}
 					/>
 				</View>
