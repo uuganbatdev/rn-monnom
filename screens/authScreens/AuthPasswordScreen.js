@@ -3,13 +3,22 @@ import { StyleSheet, ImageBackground, Image,  PlatForm, KeyboardAvoidingView, Te
 import AuthInput from '../../components/AuthInput.js';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
-
+import AuthWarning from '../../components/AuthWarning'
+import { useSignUp } from '../../contexts/AuthContext'
 
 export default function AuthPasswordScreen({ navigation, route }) {
+	let { signUpState, setPassword } = useSignUp();
+	let [ localPassword, setLocalPassword ] = useState('');
+	let [ validationPassword, setValidationPassword ] = useState('');
+	let [ showWarning, setShowWarning ] = useState(false);
+
 	let accessedFrom = route.params.accessingFrom;
 	let handleContinue = () => {
-		if ( accessedFrom == 'signUp' ) {
+		if (localPassword == '' || localPassword !== validationPassword ) {
+			setShowWarning(true)
+		} else if ( accessedFrom == 'signUp' ) {
 			navigation.push('authDateScreen');
+			setPassword(localPassword);
 		} else {
 			navigation.push('passwordChangedScreen');
 		}
@@ -29,19 +38,23 @@ export default function AuthPasswordScreen({ navigation, route }) {
 							iconpath={require('../../assets/privacy.png')}
 							maxLength={8}
 							hidden={true}
+							setState={setLocalPassword}
 						/>
-						<AuthInput
-							placeholder={'Нууц үг давтах'}
-							iconpath={require('../../assets/privacy.png')}
-							maxLength={8}
-							hidden={true}
-						/>
-					<View style={styles.warning} >
-						<Text style={{...styles.warningText, display: 'flex'}} >
-							Таны оруулсан нууц үг таарахгүй байна.
-						</Text>
+						<View>
+							<AuthInput
+								placeholder={'Нууц үг давтах'}
+								iconpath={require('../../assets/privacy.png')}
+								maxLength={8}
+								hidden={true}
+								setState={setValidationPassword}
+							/>
+							<AuthWarning 
+								warning={'Таны оруулсан нууц үг таарахгүй байна.'}
+								isVisible={showWarning}
+							/>
+						</View>
 					</View>
-					</View>
+
 					<AuthButton
 						onPress={handleContinue}
 						text={accessedFrom == 'signUp' ? 'Бүртгүүлэх': 'Нууц үг шинэчлэx'}
@@ -76,12 +89,12 @@ let styles = StyleSheet.create({
 		color: 'red'
 	},
 	inputsContainer: {
-		height: '70%',
+		height: '60%',
 		justifyContent: 'space-between',
 	},
 	
 	formContainer: {
-		justifyContent: 'space-between',
+		justifyContent: 'space-evenly',
 		height: 200,
 	},
 	

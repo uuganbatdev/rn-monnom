@@ -3,11 +3,18 @@ import { StyleSheet, ImageBackground, Image,  PlatForm, KeyboardAvoidingView, Te
 import AuthInput from '../../components/AuthInput.js';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
+import AuthWarning from '../../components/AuthWarning';
 
 
 export default function RequestResetPasswordScreen({ navigation }) {
+	let [ localPhoneNumber, setLocalPhoneNumber ] = useState('');
+	let [ showWarning, setShowWarning ] = useState(false);
 	let handleGetCode = () => {
-		navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signIn' });
+		if (localPhoneNumber.length != 8) {
+			setShowWarning(true)
+		} else {
+			navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signIn' });
+		}
 	}
 
 	return (
@@ -17,12 +24,19 @@ export default function RequestResetPasswordScreen({ navigation }) {
 					<Text style={styles.heading}>Нууц үг сэргээx</Text>
 				</View>
 				<View style={styles.formContainer} >
-					<AuthInput
-						placeholder={'Утасны дугаар'}
-						iconpath={require('../../assets/phone.png')}
-						type={'number-pad'}
-						maxLength={8}
-					/>
+					<View>
+						<AuthInput
+							placeholder={'Утасны дугаар'}
+							iconpath={require('../../assets/phone.png')}
+							type={'number-pad'}
+							maxLength={8}
+							setState={setLocalPhoneNumber}
+						/>
+						<AuthWarning
+							warning={'Утасны дугаар буруу байна.'}
+							isVisible={showWarning}
+						/>
+					</View>
 					<AuthButton
 						onPress={handleGetCode}
 						text={'Код авах'}

@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function IntroScreen({ navigation }) {
 
+
 	return (
 			<View style={styles.container}>
 				<LinearGradient 

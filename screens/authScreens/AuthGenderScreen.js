@@ -3,26 +3,28 @@ import { StyleSheet, ImageBackground, Image, TouchableOpacity,  PlatForm, Keyboa
 import AuthInput from '../../components/AuthInput.js';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
+import { useSignUp } from '../../contexts/AuthContext'
 
 
 export default function AuthGenderScreen({ navigation }) {
 
+	let { signUpState, setGender } = useSignUp();
 	let [ activeInput, setActiveInput ] = useState(2);
-	let [ gender, setGender ] = useState('female');
+	let [ localGender, setLocalGender ] = useState('female');
 
 	useEffect(() => {
 		switch(activeInput) {
 			case 1:
-				setGender('male');
+				setLocalGender('male');
 				break;
 			case 2:
-				setGender('female');
+				setLocalGender('female');
 				break;
 			case 3:
-				setGender('others');
+				setLocalGender('others');
 				break;
 			default:
-				setGender('female');
+				setLocalGender('female');
 				break;
 		}
 	},[activeInput])
@@ -32,6 +34,7 @@ export default function AuthGenderScreen({ navigation }) {
 	}
 
 	let handleContinue = () => {
+		setGender(localGender)
 		navigation.push('welcome');
 	}
 

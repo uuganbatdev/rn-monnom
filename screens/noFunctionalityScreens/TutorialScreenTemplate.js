@@ -49,12 +49,12 @@ export default function TutorialScreenTemplate({screenState, navigation }) {
 								/>
 							</TouchableOpacity>)
 							: (<View style={styles.navBtnContainer} >
-								<TouchableOpacity style={styles.authBtn} onPress={() => navigation.navigate('signIn')}>
+								<TouchableOpacity style={styles.authBtn} onPress={() => navigation.push('signIn')}>
 									<Text style={styles.authBtnText} >
 										Нэвтрэх
 									</Text>
 								</TouchableOpacity>
-								<TouchableOpacity style={styles.authBtn} onPress={() => navigation.navigate('signUp')}>
+								<TouchableOpacity style={styles.authBtn} onPress={() => navigation.push('signUp')}>
 									<Text style={styles.authBtnText} >
 										Бүртгүүлэх
 									</Text>

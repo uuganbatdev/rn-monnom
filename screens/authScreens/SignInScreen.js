@@ -3,13 +3,20 @@ import { StyleSheet, Image,  KeyboardAvoidingView, Text, TouchableOpacity, View 
 import AuthInput from '../../components/AuthInput.js';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
+import AuthWarning from '../../components/AuthWarning';
+import { useGlobalContext } from '../../contexts/GlobalContext'
 
 
 export default function SignInScreen({ navigation }) {
+	let { setIsAuthed } = useGlobalContext();
+	let [ showWarning, setShowWarning ] = useState(false);
+	let [ phoneNumber, setPhoneNumber ] = useState('');
+	let [ password, setPassword ] = useState('');
+
 	let handleSignIn = () => {
-		navigation.push('checkCodeFromPhoneNumber');
+		setIsAuthed(true);
 	}
-	
+
 	let handleForgetPassword = () => {
 		navigation.push('requestResetPassword');
 	}
@@ -26,13 +33,21 @@ export default function SignInScreen({ navigation }) {
 						iconpath={require('../../assets/phone.png')}
 						type={'number-pad'}
 						maxLength={8}
+						setState={setPhoneNumber}
 					/>
-					<AuthInput
-						placeholder={'Нууц үг'}
-						iconpath={require('../../assets/privacy.png')}
-						maxLength={8}
-						hidden={true}
-					/>
+					<View>
+						<AuthInput
+							placeholder={'Нууц үг'}
+							iconpath={require('../../assets/privacy.png')}
+							maxLength={8}
+							hidden={true}
+							setState={setPassword}
+						/>
+						<AuthWarning
+							warning={'Утасны дугаар буруу байна.'}
+							isVisible={showWarning}
+						/>
+					</View>
 					<TouchableOpacity style={styles.forgetPassword} onPress={handleForgetPassword}>
 						<Text style={styles.forgetPasswordText} >
 							Нууц үг сэргээx?

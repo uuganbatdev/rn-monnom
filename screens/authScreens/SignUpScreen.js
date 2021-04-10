@@ -3,11 +3,22 @@ import { StyleSheet, ImageBackground, Image,  PlatForm, KeyboardAvoidingView, Te
 import AuthInput from '../../components/AuthInput.js';
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
+import AuthWarning from '../../components/AuthWarning';
 
+import { useSignUp } from '../../contexts/AuthContext';
 
 export default function SignUpScreen({ navigation }) {
+	let { signUpState, setPhoneNumber } = useSignUp();
+	let [ showWarning, setShowWarning ] = useState(false);
+	let [ localPhoneNumber, setLocalPhoneNumber ] = useState('');
+
 	let handleSubmit = () => {
-		navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signUp' });
+		if (localPhoneNumber.length != 8) {
+			setShowWarning(true);
+		} else {
+			setPhoneNumber(localPhoneNumber);
+			navigation.push('checkCodeFromPhoneNumber', { accesingFrom: 'signUp' });
+		}
 	}
 
 	return (
@@ -18,12 +29,19 @@ export default function SignUpScreen({ navigation }) {
 					<Text style={styles.heading}>Бүртгүүлэх</Text>
 				</View>
 				<View style={styles.formContainer} >
-					<AuthInput
-						placeholder={'Утасны дугаар'}
-						iconpath={require('../../assets/phone.png')}
-						type={'number-pad'}
-						maxLength={8}
-					/>
+					<View style={styles.inputContainer}>
+						<AuthInput
+							placeholder={'Утасны дугаар'}
+							iconpath={require('../../assets/phone.png')}
+							type={'number-pad'}
+							maxLength={8}
+							setState={setLocalPhoneNumber}
+						/>
+						<AuthWarning
+							warning={'Утасны дугаар буруу байна.'}
+							isVisible={showWarning}
+						/>
+					</View>
 					<AuthButton
 						onPress={handleSubmit}
 						text={'Үргэлжлүүлэx'}
@@ -49,7 +67,7 @@ let styles = StyleSheet.create({
 	
 	formContainer: {
 		justifyContent: 'space-between',
-		height: 150,
+		height: 120,
 	},
 	
 	heading: {

@@ -3,9 +3,14 @@ import { StyleSheet,  Image, TouchableOpacity, KeyboardAvoidingView, Text, View 
 import AuthButton from '../../components/AuthButton.js';
 import FancyAuthHeader from '../../components/FancyAuthHeader.js';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import AuthWarning from '../../components/AuthWarning'
+import { useSignUp } from '../../contexts/AuthContext'
 
 
 export default function AuthDateScreen({ navigation }) {
+	let { signUpState, setBirthday } = useSignUp();
+	let [ showWarning, setShowWarning ] = useState(false);
+
 	let [ date, setDate ] = useState({
 		year: new Date().getFullYear(),
 		month: new Date().getMonth() + 1,
@@ -13,9 +18,6 @@ export default function AuthDateScreen({ navigation }) {
 	})
 	let [ showDatePicker, setShowDatePicker ] = useState(false);
 	
-	useEffect(() => {
-		console.log(date)
-	},[date])
 
 	let handleDatePickerChange = (newDate) => {
 		setShowDatePicker(false);
@@ -24,6 +26,7 @@ export default function AuthDateScreen({ navigation }) {
 			month: newDate.getMonth() + 1,
 			date: newDate.getDate(),
 		})
+		setBirthday(date)
 	}
 
 	let handleContinue = () => {
@@ -138,7 +141,7 @@ let styles = StyleSheet.create({
 	
 	heading: {
 		marginTop: 40,
-		marginBottom: 20,
+		marginBottom: 30,
 		fontWeight: '200'
 	},
 	
