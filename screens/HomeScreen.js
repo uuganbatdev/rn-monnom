@@ -26,7 +26,7 @@ export default function HomeScreen({ navigation }) {
 let styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: 'rgb( 252,136,46 )',
+		backgroundColor: '#0F191E',
 	},
 
 	innerContainer: {
