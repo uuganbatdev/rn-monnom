@@ -6,7 +6,9 @@ import TinyImagedList from './TinyImagedList.js';
 
 
 export default function PodcastNavScreen() {
-
+	useEffect(() => {
+		console.log('pisdaa')
+	},[])
 	return (
 			<View style={styles.container}>
 				<Text>
@@ -26,6 +28,6 @@ let styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgb( 151,27,95 )',
+		backgroundColor: '#0F191E',
 	}
 })

@@ -28,6 +28,7 @@ import { useGlobalContext } from './contexts/GlobalContext'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Constants from 'expo-constants';
 
@@ -103,11 +104,48 @@ let TabsScreen = ({ navigation }) => {
 	return (
 		<Tabs.Navigator
 			barStyle={{ backgroundColor: 'black' }}
+			activeColor='#DE5246'
 		>
-			<Tabs.Screen name='homeTab'  component={HomeStackScreen} />
-			<Tabs.Screen name='libraryTab' component={MyLibraryStackScreen} />
-			<Tabs.Screen name='profileTab' component={ProfileStackScreen} />
-			<Tabs.Screen name='searchTab' component={SearchStackScreen} />
+			<Tabs.Screen
+				name='homeTab'
+				component={HomeStackScreen}
+				options={{
+				  tabBarLabel: 'Нүүр',
+				  tabBarIcon: ({ color }) => (
+					<MaterialCommunityIcons name="home" color={color} size={26} />
+				  ),
+				}}
+			/>
+			<Tabs.Screen
+				name='libraryTab'
+				component={MyLibraryStackScreen}
+				options={{
+				  tabBarLabel: 'Миний сан',
+				  tabBarIcon: ({ color }) => (
+					<MaterialCommunityIcons name="bookmark" color={color} size={26} />
+				  ),
+				}}
+			/>
+			<Tabs.Screen
+				name='profileTab'
+				component={ProfileStackScreen}
+				options={{
+				  tabBarLabel: 'Бүртгэл',
+				  tabBarIcon: ({ color }) => (
+					<MaterialCommunityIcons name="account" color={color} size={26} />
+				  ),
+				}}
+			/>
+			<Tabs.Screen
+				name='searchTab'
+				component={SearchStackScreen}
+				options={{
+				  tabBarLabel: 'Xайx',
+				  tabBarIcon: ({ color }) => (
+					<MaterialCommunityIcons name="book-search" color={color} size={26} />
+				  ),
+				}}
+			/>
 		</Tabs.Navigator>
 	)
 }

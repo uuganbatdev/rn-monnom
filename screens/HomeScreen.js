@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import PodcastNavScreen from '../components/PodcastNavScreen.js';
 import Header from '../components/Header.js';
+import PodcastNavScreen from '../components/PodcastNavScreen.js';
 import LibraryNavScreen from '../components/LibraryNavScreen.js';
 import LiveNavScreen from '../components/LiveNavScreen.js';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
-let HomeTab = createStackNavigator();
-const TransitionScreenOptions = {
-  ...TransitionPresets.SlideFromRightIOS,
-	gestureEnabled: false,
-	cardStyle: { backgroundColor: '#0F191E', }
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+let HomeTab = createBottomTabNavigator();
+
+const tabOptions = {
+	tabBarVisible: false,
 };
+
 export default function HomeScreen({ navigation }) {
 
 	return (
 		<View style={styles.container} >
 			<Header/>
 			<HomeTab.Navigator
-				screenOptions={TransitionScreenOptions}
+				screenOptions={tabOptions}
 				initialRouteName='libraryStack'
-				headerMode='none'
 				style={styles.innerContainer}
 			>
 				<HomeTab.Screen  name='libraryStack' component={LibraryNavScreen} />
