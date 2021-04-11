@@ -13,7 +13,6 @@ function AuthContextProvider({ children }) {
 		gender: ''
 	});
 	
-	console.log(signUpState)
 	return (
 		<AuthContext.Provider value={{ signUpState, setSignUpState }}>
 			{children}

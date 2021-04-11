@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 
-export default function AuthButton({ onPress, text }) {
+export default function AuthButton({ onPress, text, disabled }) {
 
 	return (
-		<TouchableOpacity style={styles.btn} onPress={onPress}>
-			<Text  style={styles.text} >
+		<TouchableOpacity 
+			style={styles.btn}
+			onPress={onPress}
+			activeOpacity={disabled ? 1: 0.4}
+		>
+			<Text style={styles.text} >
 				{text}
 			</Text>
 		</TouchableOpacity>

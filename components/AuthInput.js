@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, Text, View, Image } from 'react-native';
 
-export default function AuthInput({ placeholder, iconpath, setState, state, phoneNumber, hidden, type, maxLength }) {
+export default function AuthInput({ placeholder, iconpath, setState, phoneNumber, hidden, type, maxLength }) {
 	let [ hiddenVal, setHiddenVal ] = useState(hidden);
 
 	return (

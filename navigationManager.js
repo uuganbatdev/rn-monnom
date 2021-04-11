@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import SignInScreen from './screens/authScreens/SignInScreen.js';
-import ResetPasswordScreen from './screens/authScreens/ResetPasswordScreen.js';
+import RequestResetPasswordScreen from './screens/authScreens/RequestResetPasswordScreen.js';
 import SignUpScreen from './screens/authScreens/SignUpScreen.js';
-import GetCodeFromPhoneNumberScreen from './screens/authScreens/GetCodeFromPhoneNumberScreen.js';
 import CheckCodeFromPhoneNumberScreen from './screens/authScreens/CheckCodeFromPhoneNumberScreen.js';
 import AuthPhoneNumberScreen from './screens/authScreens/AuthPhoneNumberScreen.js';
 import AuthDateScreen from './screens/authScreens/AuthDateScreen.js';
@@ -10,6 +9,7 @@ import AuthEmail from './screens/authScreens/AuthEmail.js';
 import AuthPasswordScreen from './screens/authScreens/AuthPasswordScreen.js';
 import AuthGenderScreen from './screens/authScreens/AuthGenderScreen.js';
 import IntroScreen from './screens/noFunctionalityScreens/IntroScreen.js';
+import PasswordChangedScreen from './screens/noFunctionalityScreens/PasswordChangedScreen.js';
 import TutorialScreenOne from './screens/noFunctionalityScreens/TutorialScreenOne.js';
 import TutorialScreenTwo from './screens/noFunctionalityScreens/TutorialScreenTwo.js';
 import TutorialScreenThree from './screens/noFunctionalityScreens/TutorialScreenThree.js';
@@ -21,10 +21,13 @@ import SingleBookScreen from './screens/SingleBookScreen.js';
 import MyLibraryScreen from './screens/MyLibraryScreen.js';
 import ProfileScreen from './screens/ProfileScreen.js';
 
+import { AuthContextProvider } from './contexts/AuthContext.js';
+import { useGlobalContext } from './contexts/GlobalContext'
+
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 import Constants from 'expo-constants';
 
@@ -34,28 +37,30 @@ let HomeStack = createStackNavigator();
 let SearchStack = createStackNavigator();
 let ProfileStack = createStackNavigator();
 let MyLibraryStack = createStackNavigator();
-let Tabs = createBottomTabNavigator();
+let Tabs = createMaterialBottomTabNavigator();
 let RootStack = createStackNavigator();
 
 let AuthStackScreen = () => {
 	return (
-		<AuthStack.Navigator headerMode='none'>
-			<AuthStack.Screen name='intro' component={IntroScreen} />
-			<AuthStack.Screen name='tutorialOne' component={TutorialScreenOne} />
-			<AuthStack.Screen name='tutorialTwo' component={TutorialScreenTwo} />
-			<AuthStack.Screen name='tutorialThree' component={TutorialScreenThree} />
-			<AuthStack.Screen name='signIn' component={SignInScreen} />
-			<AuthStack.Screen name='signUp' component={SignUpScreen} />
-			<AuthStack.Screen name='authEmail' component={AuthEmail} />
-			<AuthStack.Screen name='authPasswordScreen' component={AuthPasswordScreen} />
-			<AuthStack.Screen name='authDateScreen' component={AuthDateScreen} />
-			<AuthStack.Screen name='authGenderScreen' component={AuthGenderScreen} />
-			<AuthStack.Screen name='getCodeFromPhoneNumber' component={GetCodeFromPhoneNumberScreen} />
-			<AuthStack.Screen name='checkCodeFromPhoneNumber' component={CheckCodeFromPhoneNumberScreen} />
-			<AuthStack.Screen name='resetPassword' component={ResetPasswordScreen} />
-			<AuthStack.Screen name='authPhoneNumber' component={AuthPhoneNumberScreen} />
-			<AuthStack.Screen name='welcome' component={WelcomeScreen} />
-		</AuthStack.Navigator>
+		<AuthContextProvider>
+			<AuthStack.Navigator initialRouteName='intro' headerMode='none'>
+				<AuthStack.Screen name='intro' component={IntroScreen} />
+				<AuthStack.Screen name='tutorialOne' component={TutorialScreenOne} />
+				<AuthStack.Screen name='tutorialTwo' component={TutorialScreenTwo} />
+				<AuthStack.Screen name='tutorialThree' component={TutorialScreenThree} />
+				<AuthStack.Screen name='signIn' component={SignInScreen} />
+				<AuthStack.Screen name='signUp' component={SignUpScreen} />
+				<AuthStack.Screen name='authEmail' component={AuthEmail} />
+				<AuthStack.Screen name='authPasswordScreen' component={AuthPasswordScreen} />
+				<AuthStack.Screen name='passwordChangedScreen' component={PasswordChangedScreen} />
+				<AuthStack.Screen name='authDateScreen' component={AuthDateScreen} />
+				<AuthStack.Screen name='authGenderScreen' component={AuthGenderScreen} />
+				<AuthStack.Screen name='checkCodeFromPhoneNumber' component={CheckCodeFromPhoneNumberScreen} />
+				<AuthStack.Screen name='requestResetPassword' component={RequestResetPasswordScreen} />
+				<AuthStack.Screen name='authPhoneNumber' component={AuthPhoneNumberScreen} />
+				<AuthStack.Screen name='welcome' component={WelcomeScreen} />
+			</AuthStack.Navigator>
+		</AuthContextProvider>
 	)
 }
 
@@ -96,7 +101,9 @@ let TabsScreen = ({ navigation }) => {
 		navigation.navigate('homeTab');
 	},[])
 	return (
-		<Tabs.Navigator>
+		<Tabs.Navigator
+			barStyle={{ backgroundColor: 'black' }}
+		>
 			<Tabs.Screen name='homeTab'  component={HomeStackScreen} />
 			<Tabs.Screen name='libraryTab' component={MyLibraryStackScreen} />
 			<Tabs.Screen name='profileTab' component={ProfileStackScreen} />
@@ -106,9 +113,13 @@ let TabsScreen = ({ navigation }) => {
 }
 
 export default RootStackScreen = ({ navigation }) => {
+	let { isAuthed } = useGlobalContext();
+
 	return (
-		<RootStack.Navigator headerMode='none'>
-			<RootStack.Screen name='mainApp' component={AuthStackScreen} />
+		<RootStack.Navigator initialRouteName='authScreens' headerMode='none'>
+			{isAuthed ? <RootStack.Screen name='mainApp' component={TabsScreen} />
+				: <RootStack.Screen name='authScreens' component={AuthStackScreen} />
+			}
 		</RootStack.Navigator>
 	)
 }

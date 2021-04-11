@@ -8,9 +8,6 @@ export default function LibraryNavScreen() {
 
 	return (
 			<View style={styles.container}>
-				<Text>
-					LibraryNavScreen
-				</Text>
 				<LongCard/>
 				<BookCard/>
 
@@ -24,6 +21,5 @@ let styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: 'rgb( 63,69,4 )',
 	}
 })
