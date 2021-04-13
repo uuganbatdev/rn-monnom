@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import LongCard from './LongCard.js';
+import { StyleSheet, Text, View,  } from 'react-native';
 import PodcastCard from './PodcastCard.js';
 import TinyImagedList from './TinyImagedList.js';
+import LongCardList from './LongCardList.js';
 
 
 export default function PodcastNavScreen() {
-	useEffect(() => {
-		console.log('pisdaa')
-	},[])
+
 	return (
 			<View style={styles.container}>
-				<Text>
-					PodcastNavScreen
-				</Text>
-				<LongCard/>
+				<LongCardList />
 				<PodcastCard/>
 				<TinyImagedList/>
-
 			</View>
 	)
 
@@ -25,9 +19,9 @@ export default function PodcastNavScreen() {
 
 let styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
+		height: '100%' ,
 		backgroundColor: '#0F191E',
-	}
+		justifyContent: 'flex-start',
+	},
+
 })

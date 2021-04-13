@@ -17,7 +17,6 @@ export default function BookCard() {
 
 let styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: 'rgb( 226,23,138 )',

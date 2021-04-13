@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Image} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import screen from '../../screenWidthHeight.js';
+
+
+let {width: screenWidth} = Dimensions.get('window');
 
 export default function TutorialScreenTemplate({screenState, navigation }) {
 
@@ -81,11 +83,11 @@ let styles = StyleSheet.create({
 	
 	circle: {
 		position: 'absolute',
-		width: screen.width,
-		height: screen.width,
+		width: screenWidth,
+		height: screenWidth,
 		resizeMode: 'contain',
-		top: -screen.width / 3,
-		left: -screen.height / 4
+		top: -screenWidth / 3,
+		left: -screenWidth / 4
 	},
 
 	btnText: {
