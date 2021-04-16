@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import BookCard from './BookCard.js';
-import LongCardList from './LongCardList.js';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import LongImageCarousel from './LongImageCarousel.js';
+import BookCardList from './BookCardList.js';
 
 export default function LibraryNavScreen() {
 
 	return (
-			<View style={styles.container}>
+			<ScrollView style={styles.container}>
 				<LongImageCarousel />
-				<BookCard/>
-			</View>
+				<View style={styles.innerContainer}>
+					<BookCardList
+						title={'Аудио Ном'}
+					/>
+				</View>
+			</ScrollView>
 	)
 
 }
@@ -20,5 +23,10 @@ let styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#0F191E',
 	},
+	
+	innerContainer: {
+		marginLeft: '5%'
+	},
+	
 	
 })

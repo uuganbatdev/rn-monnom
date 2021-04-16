@@ -3,13 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 
 
 export default function LongCard({ text }) {
-
+	console.log(text)
 	return (
 			<View style={styles.container}>
 				<Text>
 					{text}
 				</Text>
-
 			</View>
 	)
 

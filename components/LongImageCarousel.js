@@ -39,7 +39,7 @@ const ENTRIES1 = [
 ];
 const {width: screenWidth} = Dimensions.get('window');
 
-const LongImageCarousel = (props) => {
+export default function LongImageCarousel(props) {
 	const [entries, setEntries] = useState([]);
 	const carouselRef = useRef(null);
 
@@ -57,6 +57,11 @@ const LongImageCarousel = (props) => {
 
 	return (
 		<View style={styles.container}>
+			<View style={styles.titleContainer} >
+				<Text style={styles.title} >
+					Шилдэг түүвэр
+				</Text>
+			</View>
 			<Carousel
 				ref={carouselRef}
 				sliderWidth={screenWidth}
@@ -65,17 +70,29 @@ const LongImageCarousel = (props) => {
 				data={entries}
 				renderItem={renderItem}
 				hasParallaxImages={true}
-				firstItem={3}
+				firstItem={2}
 			/>
 		</View>
 	);
 };
 
-export default LongImageCarousel;
 
 const styles = StyleSheet.create({
 	container: {
-		height: screenWidth * 0.7 * 3/4 + 10,
+		height: screenWidth * 0.7 * 3/4 + 30,
 	},
+	
+	titleContainer: {
+		width: '95%',
+		alignSelf: 'flex-end'
+	},
+	
+	title: {
+		color: 'white',
+		fontSize: 20,
+		fontWeight: '700'
+	},
+	
+	
 
 });

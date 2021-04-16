@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity,  Text, View, FlatList } from 'react-native'
 import LongCard from './LongCard.js';
 
 let data = [
@@ -19,25 +19,48 @@ let data = [
 		text: 'sd4',
 		key: '4'
 	},
+	{
+		text: 'sd4',
+		key: '5'
+	},
+	{
+		text: 'sd4',
+		key: '6'
+	},
 ]
 
 
 export default function LongCardList () {
+
+	let [ states, setStates ] = useState(data);
+	let [ num, setNum ] = useState(15);
 	
+	let addData = () => {
+		setStates(prevStates => {
+			return (
+				[{ text: 'sda', key: num.toString()} ]
+			)
+		})
+		setNum(prevnum => prevnum + 1)
+	}
+
 	return (
+		<View>
+			<TouchableOpacity style={styles.btn} onPress={addData}>
+				<Text>
+					haha
+				</Text>
+			</TouchableOpacity>
 			<FlatList 
 				style={styles.container} 
-				data={data}
+				data={states}
 				renderItem={({ item }) => (
-					<LongCard text={item.text}/>		
+					<LongCard text={item.key}/>		
 				)} 
-				getItemLayout={(data, index) => (
-					{length: 300, offset: 300 * index, index}
-				)}
 				showsHorizontalScrollIndicator={false}
-				pagingEnabled
 				horizontal
 			/>
+		</View>
 	)
 
 }
