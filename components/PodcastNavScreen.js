@@ -1,27 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
-import PodcastCard from './PodcastCard.js';
+import { StyleSheet, Text, View, ScrollView  } from 'react-native';
 import TinyImagedList from './TinyImagedList.js';
-import LongCardList from './LongCardList.js';
+import PodcastCardList from './PodcastCardList.js';
+import LongImageCarousel from './LongImageCarousel.js';
 
 
 export default function PodcastNavScreen() {
 
 	return (
-			<View style={styles.container}>
-				<LongCardList />
-				<PodcastCard/>
-				<TinyImagedList/>
+		<ScrollView style={styles.container}>
+			<View style={styles.innerContainer}>
+				<PodcastCardList
+					title={'Хадгалсан подкастууд'}
+					savedPodcast={true}
+				/>
+				<LongImageCarousel
+					title={'Гадаадын шилдэг подкастууд'}
+					titleColor={'#DE5246'}
+				/>
+				<TinyImagedList
+					title={'Шинээр нэмэгдсэн дугаарууд'}
+				/>
+				<PodcastCardList
+					title={'Уран зөгнөлт'}
+				/>
+				<PodcastCardList
+					title={'Бизнес, эдийн засаг'}
+				/>
+				<PodcastCardList
+					title={'Уран зөгнөлт'}
+				/>
 			</View>
+		</ScrollView>
 	)
 
 }
 
 let styles = StyleSheet.create({
 	container: {
-		height: '100%' ,
 		backgroundColor: '#0F191E',
-		justifyContent: 'flex-start',
 	},
+
+	innerContainer: {
+		marginLeft: '5%'
+	},
+
 
 })

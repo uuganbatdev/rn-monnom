@@ -23,7 +23,7 @@ let data = [
 	},
 ]
 export default function BookCardList ({ title }) {
-	let [ bookList, serBookList ] = useState(data);
+	let [ bookList, setBookList ] = useState(data);
 
 	return (
 		<View style={styles.container}>
@@ -31,8 +31,8 @@ export default function BookCardList ({ title }) {
 				<Text style={styles.title} >
 					{title}
 				</Text>
+			</View>
 				<FlatList 
-					style={styles.container} 
 					data={bookList}
 					renderItem={({ item }) => (
 						<BookCard 
@@ -44,7 +44,6 @@ export default function BookCardList ({ title }) {
 					showsHorizontalScrollIndicator={false}
 					horizontal
 				/>
-			</View>
 		</View>
 	)
 
@@ -60,5 +59,6 @@ let styles = StyleSheet.create({
 		fontSize: 20,
 		fontWeight: '700',
 		textAlign: 'left',
+		marginBottom: 10,
 	},
 })

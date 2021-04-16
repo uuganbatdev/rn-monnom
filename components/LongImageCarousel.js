@@ -39,7 +39,7 @@ const ENTRIES1 = [
 ];
 const {width: screenWidth} = Dimensions.get('window');
 
-export default function LongImageCarousel(props) {
+export default function LongImageCarousel({ titleColor, title }) {
 	const [entries, setEntries] = useState([]);
 	const carouselRef = useRef(null);
 
@@ -57,9 +57,9 @@ export default function LongImageCarousel(props) {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.titleContainer} >
-				<Text style={styles.title} >
-					Шилдэг түүвэр
+			<View style={ styles.titleContainer } >
+				<Text style={{ ...styles.title, color: titleColor ? titleColor : 'white' }} >
+					{title}
 				</Text>
 			</View>
 			<Carousel
@@ -80,6 +80,8 @@ export default function LongImageCarousel(props) {
 const styles = StyleSheet.create({
 	container: {
 		height: screenWidth * 0.7 * 3/4 + 30,
+		marginLeft: '-5%',
+		marginVertical: 10,
 	},
 	
 	titleContainer: {
@@ -88,7 +90,6 @@ const styles = StyleSheet.create({
 	},
 	
 	title: {
-		color: 'white',
 		fontSize: 20,
 		fontWeight: '700'
 	},

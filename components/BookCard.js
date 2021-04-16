@@ -24,7 +24,7 @@ export default function BookCard({ author, bookName, bookImageSource }) {
 					{author}
 				</Text>
 				<TouchableOpacity style={styles.iconContainer} onPress={handleSaveBook}>
-					<MaterialCommunityIcons name={icon} color={'#DE5246'} size={46} />
+					<MaterialCommunityIcons name={icon} color={'#DE5246'} size={36} />
 				</TouchableOpacity>
 			</TouchableOpacity>
 	)
@@ -33,7 +33,7 @@ export default function BookCard({ author, bookName, bookImageSource }) {
 
 let styles = StyleSheet.create({
 	container: {
-		justifyContent: 'center',
+		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
 		borderRadius: 10,
 		marginRight: 20,
@@ -47,7 +47,7 @@ let styles = StyleSheet.create({
 	},
 
 	bookNameText: {
-		width: '90%',
+		width: '100%',
 		color: 'white',
 		fontSize: 18 
 	},
@@ -59,8 +59,8 @@ let styles = StyleSheet.create({
 	iconContainer: {
 		position: 'absolute',
 		right: 0,
-		top: 140,
-		padding:5 
+		top: 150,
+		padding:5,
 	},
 	
 	
