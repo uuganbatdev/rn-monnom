@@ -60,10 +60,11 @@ let styles = StyleSheet.create({
 	listText: {
 		color: 'white',
 		marginLeft: 10,
-		width: '80%',
+		width: '70%',
 	},
 	
 	iconContainer: {
+		paddingHorizontal: 10,
 		position: 'absolute',
 		right: 0,
 		height: '100%',

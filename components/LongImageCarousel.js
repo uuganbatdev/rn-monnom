@@ -137,6 +137,7 @@ const ENTRIES1 = [
 		illustration: require('../assets/long-1.png'),
 	},
 ];
+
 const {width: screenWidth} = Dimensions.get('window');
 
 export default function LongImageCarousel({ titleColor, title }) {
@@ -146,6 +147,7 @@ export default function LongImageCarousel({ titleColor, title }) {
 	useEffect(() => {
 		setEntries(ENTRIES1);
 	}, []);
+
 
 	const renderItem = ({item, index}, parallaxProps) => {
 		return (
