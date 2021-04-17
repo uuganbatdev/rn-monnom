@@ -4,6 +4,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function LongCard({ text }) {
 	console.log(text)
+	useEffect(() => {
+		console.log('effect!!!')
+	})
 	return (
 			<View style={styles.container}>
 				<Text>

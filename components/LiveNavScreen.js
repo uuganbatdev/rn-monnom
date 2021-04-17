@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-native';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -20,11 +20,19 @@ let texts = [
 		text: 'haha',
 		key: '4'
 	},
+	{
+		text: 'haha',
+		key: '5'
+	},
+	{
+		text: 'haha',
+		key: '6'
+	},
 ]
 
 export default function LiveNavScreen() {
 	let [ data, setData ] = useState(texts);
-	console.log(data)
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.logoContainer} >
@@ -33,8 +41,14 @@ export default function LiveNavScreen() {
 				<Image style={styles.logo} source={require('../assets/logo.png')} />
 			</View>
 			<Image style={styles.logoText} source={require('../assets/live2.png')} />
-			<View>
-			</View>
+			<FlatList
+				data={data}
+				renderItem={({ item }) => (
+					<View style={styles.list} ><Text>{item.text}</Text></View>
+				)}
+				pagingEnabled={true}
+				style={styles.listContainer} 
+			/>
 		</View>
 	)
 
@@ -82,5 +96,19 @@ let styles = StyleSheet.create({
 		marginTop: 10,
 		resizeMode: 'contain'
 	},
+	
+	listContainer: {
+		backgroundColor: 'red',
+		height: 50,
+		width: 100,
+		flexGrow: 0
+	},
+	
+	list: {
+		backgroundColor: 'green',
+		paddingVertical:5 
+	},
+	
+	
 	
 })

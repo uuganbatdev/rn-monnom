@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity,  Text, View, FlatList } from 'react-native'
 import BookCard from './BookCard.js';
 
@@ -21,9 +21,162 @@ let data = [
 		bookImageSource: require('../assets/book-1.png'),
 		key: '3' 
 	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '4' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '6' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '7' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '8' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '9' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '10' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '11' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '12' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '13' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '14' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '15' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '16' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '17' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '18' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '19' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '20' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '21' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '22' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '23' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '24' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '25' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '26' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '27' 
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '28'
+	},
+	{
+		author: 'Ц. Оюунгэрэл',
+		bookName: 'Жаран Цагаан Хонь',
+		bookImageSource: require('../assets/book-1.png'),
+		key: '29' 
+	},
 ]
 export default function BookCardList ({ title }) {
-	let [ bookList, setBookList ] = useState(data);
+	let [ bookList, setBookList ] = useState();
+	useEffect(() => {
+		setBookList(data)
+	},[])
 
 	return (
 		<View style={styles.container}>
@@ -41,7 +194,7 @@ export default function BookCardList ({ title }) {
 							bookImageSource={item.bookImageSource}
 						/>		
 					)} 
-					showsHorizontalScrollIndicator={false}
+					howsHorizontalScrollIndicator={false}
 					horizontal
 				/>
 		</View>

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect, useRef, Component } from 'react';
 import { StyleSheet, Text, View, Dimensions, TouchableOpacity, Platform } from 'react-native'
 import { ParallaxImage } from 'react-native-snap-carousel';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-export default function LongImage ({ parallaxProps }) {
-	
-	return (
+export default class LongImage extends Component {
+	constructor(props) {
+		super(props)
+	}
+
+	shouldComponentUpdate() {
+		return false;
+	}
+
+	render() {
+		console.log('effect!!')
+		return (
 			<TouchableOpacity
 				activeOpacity={0.7}
 				style={styles.item}
@@ -16,10 +25,11 @@ export default function LongImage ({ parallaxProps }) {
 					style={styles.image}
 					containerStyle={styles.imageContainer}
 					parallaxFactor={0.4}
-					{...parallaxProps}
+					{...this.props.parallaxProps}
 				/>
 			</TouchableOpacity>
-	)
+		)
+	}
 
 }
 

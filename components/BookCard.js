@@ -5,6 +5,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 export default function BookCard({ author, bookName, bookImageSource }) {
 	let [ icon, setIcon ] = useState('bookmark-plus');
+	useEffect(() => {
+		console.log('mounted ' )
+		return () => console.log('unmounted ')
+	},[])
 
 	let handleSaveBook = () => {
 		if (icon == 'bookmark-plus') {

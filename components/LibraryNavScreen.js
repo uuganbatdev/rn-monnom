@@ -7,7 +7,9 @@ import SpecialCard from './SpecialCard.js';
 export default function LibraryNavScreen() {
 
 	return (
-		<ScrollView style={styles.container}>
+		<ScrollView
+			style={styles.container}
+		>
 			<View style={styles.innerContainer}>
 				<LongImageCarousel
 					title={'Шилдэг түүвэр'}

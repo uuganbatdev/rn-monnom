@@ -36,6 +36,106 @@ const ENTRIES1 = [
 		subtitle: 'Lorem ipsum dolor sit amet',
 		illustration: require('../assets/long-1.png'),
 	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
+	{
+		title: 'The lone tree, majestic landscape of New Zealand',
+		subtitle: 'Lorem ipsum dolor sit amet',
+		illustration: require('../assets/long-1.png'),
+	},
 ];
 const {width: screenWidth} = Dimensions.get('window');
 
