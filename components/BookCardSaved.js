@@ -5,7 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const {width: screenWidth} = Dimensions.get('window');
 
 export default function BookCard({ bookName, bookImageSource }) {
-	let [ icon, setIcon ] = useState('bookmark-plus');
 
 	return (
 			<TouchableOpacity style={styles.container}>
@@ -16,6 +15,11 @@ export default function BookCard({ bookName, bookImageSource }) {
 				>
 					{bookName}
 				</Text>
+				<View style={styles.iconsContainer} >
+						<MaterialCommunityIcons name={'music-note'} color={'#DE5246'} size={screenWidth / 25} />
+						<MaterialCommunityIcons name={'eye'} color={'#DE5246'} size={screenWidth / 25} />
+						<MaterialCommunityIcons name={'layers'} color={'#DE5246'} size={screenWidth / 25} />
+				</View>
 			</TouchableOpacity>
 	)
 
@@ -46,13 +50,13 @@ let styles = StyleSheet.create({
 		color: '#D2D2D2'
 	},
 	
-	iconContainer: {
-		position: 'absolute',
-		right: 0,
-		top: 150,
-		padding:5,
+	iconsContainer: {
+		marginTop: 5,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		width: '80%'
 	},
-	
+
 	
 	
 })
