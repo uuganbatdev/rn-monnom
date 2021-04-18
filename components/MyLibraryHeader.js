@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useNavigation } from '@react-navigation/native';
+
 const {width: screenWidth} = Dimensions.get('window');
 
 let buttonsData = [
@@ -29,10 +31,19 @@ let buttonsData = [
 
 export default function MyLibraryHeader () {
 	let [ buttons, setbuttons ] = useState([]);
+	let navigation = useNavigation();
 	let [ activeButton, setActiveButton ] = useState(0);
 
 	let handlePress = (index) => {
-		setActiveButton(index)
+		setActiveButton(index);
+		switch(index) {
+			case 0:
+				navigation.navigate('savedPodcastTab');
+				break;
+			case 1:
+				navigation.navigate('savedBooksTab');
+				break;
+		}
 	}
 
 	useEffect(() => {
@@ -47,7 +58,7 @@ export default function MyLibraryHeader () {
 							<View key={index} style={styles.singleButtonContainer} >
 								<TouchableOpacity style={styles.button} onPress={() => handlePress(index)}>
 									<View style={{ ...styles.iconContainer, backgroundColor: activeButton == index ? 'white': '#3f474b' }} >
-										<MaterialCommunityIcons name={button.iconName} color={'#DE5246'} size={screenWidth * 0.85 / 12} />
+										<MaterialCommunityIcons name={button.iconName} color={'#DE5246'} size={screenWidth * 0.9 / 12} />
 									</View>
 									<Text style={{ ...styles.buttonText, color: activeButton == index ? 'white': '#DE5246' }} >
 										{button.buttonText}
@@ -70,11 +81,11 @@ let styles = StyleSheet.create({
 	},
 	
 	innerContainer: {
-		width: '85%',
+		width: '90%',
 	},
 	
 	singleButtonContainer: {
-		width: screenWidth * 0.85 / 4,
+		width: screenWidth * 0.9 / 4,
 	},
 	
 	button: {

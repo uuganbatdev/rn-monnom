@@ -4,7 +4,6 @@ import Header from '../components/Header.js';
 import PodcastNavScreen from '../components/PodcastNavScreen.js';
 import LibraryNavScreen from '../components/LibraryNavScreen.js';
 import LiveNavScreen from '../components/LiveNavScreen.js';
-import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -35,13 +34,7 @@ export default function HomeScreen({ navigation }) {
 
 let styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		
+		height: '100%',
 	},
 
-	innerContainer: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	}
 })

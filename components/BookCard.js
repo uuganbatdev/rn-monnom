@@ -39,14 +39,14 @@ let styles = StyleSheet.create({
 	container: {
 		justifyContent: 'flex-start',
 		alignItems: 'flex-start',
-		borderRadius: 10,
 		marginRight: 20,
 		width: 150,
 	},
 	
 	bookImage: {
 		width: '100%',
-		height: 200,
+		borderRadius: 10,
+		height: 150 * 9/6,
 		resizeMode: 'cover',
 	},
 
@@ -63,8 +63,8 @@ let styles = StyleSheet.create({
 	iconContainer: {
 		position: 'absolute',
 		right: 0,
-		top: 150,
-		padding:5,
+		top: 175,
+		padding: 6,
 	},
 	
 	
