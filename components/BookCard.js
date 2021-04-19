@@ -17,7 +17,7 @@ export default function BookCard({ author, bookName, bookImageSource }) {
 	}
 
 	let openSingleBook = () => {
-		navigation.navigate('singleBookScreen')
+		navigation.push('singleBookScreen')
 	}
 
 	return (

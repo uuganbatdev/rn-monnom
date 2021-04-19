@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useNavigation } from '@react-navigation/native';
 
 export default function PodcastCard ({ author, podcastImageSource }) {
 	let [ icon, setIcon ] = useState('bookmark-plus');
+	let navigation = useNavigation();
 
 	let handleSaveBook = () => {
 		if (icon == 'bookmark-plus') {
@@ -13,9 +15,12 @@ export default function PodcastCard ({ author, podcastImageSource }) {
 			setIcon('bookmark-plus')
 		}
 	}
+	let openSinglePodcast = () => {
+		navigation.push('singlePodcastScreen');
+	}
 
 	return (
-			<TouchableOpacity style={styles.container}>
+			<TouchableOpacity style={styles.container} onPress={openSinglePodcast}>
 				<Image style={styles.bookImage} source={podcastImageSource} />
 				<Text style={styles.author} >
 					{author}

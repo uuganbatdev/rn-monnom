@@ -6,11 +6,11 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 const {width: screenWidth} = Dimensions.get('window');
 
-export default function SingleBookScreen() {
+export default function SingleBookScreen({ navigation }) {
 
 	return (
 			<ScrollView style={styles.container}>
-				<TouchableOpacity style={styles.backButton} >
+				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
 					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
 				</TouchableOpacity>
 				<View style={styles.innerContainer} >
@@ -67,7 +67,7 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
-		paddingTop: 40
+		paddingTop: 30
 	},
 	
 	innerContainer: {
@@ -84,7 +84,6 @@ let styles = StyleSheet.create({
 	},
 
 	backButton: {
-		position: 'absolute'
 	},
 	
 	detailContainer: {
