@@ -1,10 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8, ];
+let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8 ];
 
 let PodcastEpisode = ({ name }) => {
+	let navigation = useNavigation();
+	
+	let playPodcast = () => {
+		navigation.push('podcastPlayerScreen')
+	}
+
 	return (
 		<View style={styles.episodeContainer} >
 			<Image style={styles.episodeImage} source={require('../assets/podcast-1.png')} />
@@ -17,7 +24,7 @@ let PodcastEpisode = ({ name }) => {
 				</Text>
 				<Text style={styles.time} >2:13:45</Text>
 			</View>
-			<TouchableOpacity style={styles.downloadIcon} >
+			<TouchableOpacity style={styles.downloadIcon} onPress={playPodcast} >
 				<MaterialCommunityIcons name={'download'} color={'#DE5246'} size={25} />
 			</TouchableOpacity>
 		</View>

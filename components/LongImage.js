@@ -14,7 +14,6 @@ export default class LongImage extends Component {
 	}
 
 	render() {
-		console.log('effect!!')
 		return (
 			<TouchableOpacity
 				activeOpacity={0.7}

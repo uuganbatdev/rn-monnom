@@ -39,7 +39,7 @@ let styles = StyleSheet.create({
 	},
 	
 	commentContainer: {
-		marginVertical: 5,
+		marginBottom: 15,
 	},
 	
 	username: {
