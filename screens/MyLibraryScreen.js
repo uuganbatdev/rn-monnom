@@ -21,7 +21,7 @@ export default function MyLibraryScreen() {
 			<MyLibraryHeader />
 			<MyLibraryTabs.Navigator
 				screenOptions={tabOptions}
-				initialRouteName='libraryStack'
+				initialRouteName='savedPodcastTab'
 			>
 				<MyLibraryTabs.Screen  name='savedPodcastTab' component={SavedPodcastTab} />
 				<MyLibraryTabs.Screen  name='savedBooksTab' component={SavedBooksTab} />

@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { useNavigation } from '@react-navigation/native';
 
 export default function BookCard({ author, bookName, bookImageSource }) {
 	let [ icon, setIcon ] = useState('bookmark-plus');
-	useEffect(() => {
-		console.log('mounted ' )
-		return () => console.log('unmounted ')
-	},[])
+	let navigation = useNavigation();
 
 	let handleSaveBook = () => {
 		if (icon == 'bookmark-plus') {
@@ -18,8 +16,12 @@ export default function BookCard({ author, bookName, bookImageSource }) {
 		}
 	}
 
+	let openSingleBook = () => {
+		navigation.navigate('singleBookScreen')
+	}
+
 	return (
-			<TouchableOpacity style={styles.container}>
+			<TouchableOpacity style={styles.container} onPress={openSingleBook}>
 				<Image style={styles.bookImage} source={bookImageSource} />
 				<Text style={styles.bookNameText} >
 					{bookName}
@@ -45,7 +47,7 @@ let styles = StyleSheet.create({
 	
 	bookImage: {
 		width: '100%',
-		borderRadius: 10,
+		borderRadius: 5,
 		height: 150 * 9/6,
 		resizeMode: 'cover',
 	},

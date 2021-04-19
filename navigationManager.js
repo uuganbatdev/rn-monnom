@@ -31,6 +31,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Constants from 'expo-constants';
+import { View, Text, Button } from 'react-native';
 
 
 let AuthStack = createStackNavigator();
@@ -97,6 +98,7 @@ let MyLibraryStackScreen = () => {
 	)
 }
 
+
 let TabsScreen = ({ navigation }) => {
 	useEffect(() => {
 		navigation.navigate('homeTab');
@@ -154,9 +156,16 @@ export default RootStackScreen = ({ navigation }) => {
 	let { isAuthed } = useGlobalContext();
 
 	return (
-		<RootStack.Navigator initialRouteName='authScreens' headerMode='none'>
-			{isAuthed ? <RootStack.Screen name='mainApp' component={TabsScreen} />
-				: <RootStack.Screen name='authScreens' component={AuthStackScreen} />
+		<RootStack.Navigator initialRouteName='authScreens' headerMode='none' mode='modal'>
+			{isAuthed ?
+					(
+						<>
+							<RootStack.Screen name='mainApp' component={TabsScreen} />
+							<RootStack.Screen name="singlePodcastScreen" component={SinglePodcastScreen} />
+							<RootStack.Screen name="singleBookScreen" component={SingleBookScreen} />
+						</>
+					) 
+					: <RootStack.Screen name='authScreens' component={AuthStackScreen} />
 			}
 		</RootStack.Navigator>
 	)

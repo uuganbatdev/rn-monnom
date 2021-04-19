@@ -21,7 +21,6 @@ export default function HomeScreen({ navigation }) {
 			<HomeTab.Navigator
 				screenOptions={tabOptions}
 				initialRouteName='libraryStack'
-				style={styles.innerContainer}
 			>
 				<HomeTab.Screen  name='libraryStack' component={LibraryNavScreen} />
 				<HomeTab.Screen  name='podcastStack' component={PodcastNavScreen} />

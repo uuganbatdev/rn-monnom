@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Image, Text, View, TextInput, Dimensions, Platform, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -8,30 +8,37 @@ const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 function TypeButton ({ type, text, activeButton, handleTypePress }) {
 	return (
 		<TouchableOpacity style={styles.btn} onPress={() => handleTypePress(type)}>
-			<Text style={{ ...styles.btnText, color: activeButton == type  ? '#DE5246' : 'white' }} >
+			<Text style={{
+				...styles.btnText,
+				color: activeButton == type  ? '#DE5246' : 'white'
+			}} >
 				{text}
 			</Text>
-			<View style={{ ...styles.btnBottomLine, backgroundColor: activeButton == type ? '#DE5246' : 'transparent' }} ></View>
+			<View style={{
+				...styles.btnBottomLine,
+				backgroundColor: activeButton == type ? '#DE5246' : 'transparent'
+			}} ></View>
 		</TouchableOpacity>
 	)
 }
 
 
-export default function SearchScreen() {
+export default function SearchScreen({ navigation }) {
+	let searchInput = useRef();
+
+	useEffect(() => {
+		let unsubscribe = navigation.addListener('focus', () => {
+		});
+		return unsubscribe;
+	},[navigation])
 
 	let [ activeButton, setactiveButton ] = useState('podcast');
-
 	let handleTypePress = (type) => {
 		setactiveButton(type)
 	}
 
 	return (
 		<View style={styles.container}>
-			<Image 
-				style={styles.logo}
-				source={require('../assets/logo.png')}
-				blurRadius={Platform.OS == 'android'? 5 : 20}
-			/>
 			<View style={styles.searchContainer} >
 				<View style={styles.inputContainer} >
 					<Icon name={'search'} size={25} color={'grey'} />
@@ -39,6 +46,8 @@ export default function SearchScreen() {
 						autoCorrect={false}
 						style={styles.input} 
 						textContentType='none'
+						ref={searchInput}
+						autoFocus={true}
 					/>
 				</View>
 				<TouchableOpacity style={styles.searchButton} onPress={() => console.log('btn')}>
@@ -99,18 +108,18 @@ let styles = StyleSheet.create({
 		width: '90%',
 		alignItems: 'center'
 	},
-	
+
 	searchButton: {
 		flex: 1,
 		alignItems: 'center',
 	},
-	
+
 	searchText: {
 		paddingVertical: 10,
 		color: 'white'
 	},
-	
-	
+
+
 	inputContainer: {
 		width: '80%',
 		borderRadius: 15,
@@ -118,19 +127,19 @@ let styles = StyleSheet.create({
 		backgroundColor: 'white',
 		flexDirection: 'row'
 	},
-	
+
 	buttonsContainer: {
 		width: '90%',
 		flexDirection: 'row',
 		marginTop: 10,
 		justifyContent: 'space-between'
 	},
-	
+
 	btn: {
 		paddingHorizontal: '5%',
 		paddingVertical: 5 
 	},
-	
+
 	btnBottomLine: {
 		height: 2,
 		width: 40,
@@ -139,12 +148,12 @@ let styles = StyleSheet.create({
 		borderRadius: 5,
 		backgroundColor: '#DE5246'
 	},
-	
+
 	btnText: {
 		textAlign: 'center',
 		fontSize: 16,
 	},
-	
+
 	line: {
 		width: 1,
 		height: '100%',
