@@ -32,5 +32,4 @@ let styles = StyleSheet.create({
 		backgroundColor: '#2B2F48',
 	},
 	
-	
 })

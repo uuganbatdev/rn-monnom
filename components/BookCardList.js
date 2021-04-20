@@ -172,7 +172,7 @@ let data = [
 		key: '29' 
 	},
 ]
-export default function BookCardList ({ title }) {
+export default function BookCardList ({ title, titleColor }) {
 	let [ bookList, setBookList ] = useState();
 	useEffect(() => {
 		setBookList(data)
@@ -181,7 +181,7 @@ export default function BookCardList ({ title }) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.titleContainer} >
-				<Text style={styles.title} >
+				<Text style={{ ...styles.title, color: titleColor ? titleColor : '#DE5246' }} >
 					{title}
 				</Text>
 			</View>
@@ -195,7 +195,7 @@ export default function BookCardList ({ title }) {
 						/>		
 					)} 
 					howsHorizontalScrollIndicator={false}
-					horizontal
+					horizontal={true}
 				/>
 		</View>
 	)
@@ -208,7 +208,6 @@ let styles = StyleSheet.create({
 	},
 
 	title: {
-		color: '#DE5246',
 		fontSize: 20,
 		fontWeight: '700',
 		textAlign: 'left',

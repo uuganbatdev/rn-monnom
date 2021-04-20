@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
-
 let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8, ];
 
 let PodcastComment = () => {
@@ -16,11 +15,12 @@ let PodcastComment = () => {
 	)
 }
 
-export default function PodcastCommentsTab() {
+export default function Comments() {
 
 	return (
 		<View style={styles.listContainer} >
 			<FlatList
+				nestedScrollEnabled={true}
 				data={episodes}
 				renderItem={({item}) => (
 					<PodcastComment name={item} />
@@ -35,7 +35,7 @@ let styles = StyleSheet.create({
 	listContainer: {
 		width: '100%',
 		flex: 1,
-		paddingTop: 20
+		paddingTop: 20,
 	},
 	
 	commentContainer: {

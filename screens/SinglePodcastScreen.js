@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, ScrollView, FlatList } from 'react-native';
 import PodcastOtherEpisodes from '../components/PodcastOtherEpisodes.js';
 import PodcastAbout from '../components/PodcastAbout.js';
-import PodcastCommentsTab from '../components/PodcastCommentsTab.js';
+import Comments from '../components/Comments.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import PodcastEpisodesTab from '../components/PodcastEpisodesTab';
 
@@ -99,7 +99,7 @@ export default function SinglePodcastScreen({ navigation }) {
 						>
 							<SinglePodcastTabs.Screen name={'podcastEpisodes'} component={PodcastEpisodesTab} />
 							<SinglePodcastTabs.Screen name={'podcastAbout'} component={PodcastAboutTab} />
-							<SinglePodcastTabs.Screen name={'podcastComments'} component={PodcastCommentsTab} />
+							<SinglePodcastTabs.Screen name={'podcastComments'} component={Comments} />
 						</SinglePodcastTabs.Navigator>
 					</View>
 				</View>

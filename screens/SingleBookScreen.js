@@ -3,13 +3,15 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity,Dimensions, Image 
 import BookCard from '../components/BookCard.js';
 import BookComment from '../components/BookComment.js';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Comments from '../components/Comments';
+import BookCardList from '../components/BookCardList';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 export default function SingleBookScreen({ navigation }) {
 
 	return (
-			<ScrollView style={styles.container}>
+			<ScrollView style={styles.container} >
 				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
 					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
 				</TouchableOpacity>
@@ -58,11 +60,17 @@ export default function SingleBookScreen({ navigation }) {
 					</View>
 					<View style={styles.commentsContainer} >
 						<Text style={styles.commentTitle} >Сэтгэгдэлүүд:</Text>
+						<View style={styles.innerCommentsContainer} >
+							<Comments />
+						</View>
 					</View>
+					<BookCardList
+						title={'Ц. Оюунгэрэл'}
+						titleColor={'white'}
+					/>
 				</View>
 			</ScrollView>
-	)
-
+	) 
 }
 
 let styles = StyleSheet.create({
@@ -70,6 +78,11 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
+	},
+	
+	innerCommentsContainer: {
+		width: '100%',
+		height: 200,
 	},
 	
 	innerContainer: {
@@ -163,7 +176,12 @@ let styles = StyleSheet.create({
 	},
 	
 	commentsContainer: {
-		width: '100%'
+		width: '100%',
 	},
+
+	commentTitle: {
+		color: 'white',
+		fontSize: 20
+	}
 	
 })
