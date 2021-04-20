@@ -113,7 +113,6 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
-		paddingTop: 30
 	},
 	
 	innerContainer: {
@@ -122,6 +121,7 @@ let styles = StyleSheet.create({
 		alignSelf: 'center',
 		alignItems: 'center'
 	},
+	
 	
 	top: {
 		marginTop: 10,

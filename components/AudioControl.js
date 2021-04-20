@@ -9,7 +9,7 @@ import Slider from 'react-native-slider';
 
 const {width: screenWidth} = Dimensions.get('window');
 
-export default function AudioControl() {
+export default function AudioControl({ bookPlayer }) {
 	let [ sliderValue, setSliderValue ] = useState(0);
 	let [ soundSliderValue, setSoundSliderValue ] = useState(0);
 
@@ -24,9 +24,17 @@ export default function AudioControl() {
 				maximumTrackTintColor={'#DE5246'}
 			/>
 			<View style={styles.controller} >
-				<TouchableOpacity style={styles.iconContainer} >
-					<Ionicons name="cloud-download-outline" color={'white'} size={35} />
-				</TouchableOpacity>
+				{
+					bookPlayer ? (
+						<TouchableOpacity style={styles.iconContainer} >
+							<MaterialCommunityIcons name="skip-previous" color={'white'} size={35} />
+						</TouchableOpacity>
+					):(
+						<TouchableOpacity style={styles.iconContainer} >
+							<Ionicons name="cloud-download-outline" color={'white'} size={35} />
+						</TouchableOpacity>
+					)
+				}
 				<TouchableOpacity style={styles.iconContainer} >
 					<MaterialIcons name="rotate-left" color={'white'} size={25} />
 				</TouchableOpacity>
@@ -36,9 +44,17 @@ export default function AudioControl() {
 				<TouchableOpacity style={styles.iconContainer} >
 					<MaterialIcons name="rotate-right" color={'white'} size={25} />
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.iconContainer} >
-					<MaterialCommunityIcons name="bookmark-outline" color={'white'} size={35} />
-				</TouchableOpacity>
+				{
+					bookPlayer ? (
+						<TouchableOpacity style={styles.iconContainer} >
+							<MaterialCommunityIcons name="skip-next" color={'white'} size={35} />
+						</TouchableOpacity>
+					):(
+						<TouchableOpacity style={styles.iconContainer} >
+							<MaterialCommunityIcons name="bookmark-outline" color={'white'} size={35} />
+						</TouchableOpacity>
+					)
+				}
 			</View>
 			<View style={styles.soundSliderContainer} >
 				<MaterialCommunityIcons name="volume-medium" color={'#DE5246'} size={25} />

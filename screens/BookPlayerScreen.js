@@ -10,7 +10,15 @@ import PodcastEpisode from '../components/PodcastEpisode.js';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8 ];
 
-export default function PodcastPlayerScreen ({ navigation }) {
+let ChapterList = () => {
+	return (
+		<TouchableOpacity style={styles.chapter} >
+			<Text style={styles.innerChapter} numberOfLines={1} >Бүлэг 2 : Хавар цаг Оюуны мэлмий</Text>
+		</TouchableOpacity>
+	)
+}
+
+export default function BookPlayerScreen ({ navigation }) {
 
 	return (
 			<View style={styles.container}>
@@ -19,17 +27,18 @@ export default function PodcastPlayerScreen ({ navigation }) {
 				</TouchableOpacity>
 				<View style={styles.innerContainer} >
 					<View style={styles.episodeDetails} >
-						<Image style={styles.image} source={require('../assets/podcast-1.png')} />
-						<Text style={styles.podcastName} numberOfLines={1}>Ideree's Podcast</Text>
-						<Text style={styles.episodeName} numberOfLines={1}>Episode 66: Lodoisambuu. Ulaanbal</Text>
+						<Image style={styles.image} source={require('../assets/book-1.png')} />
+						<Text style={styles.episodeName} numberOfLines={1}>Бүлэг 1 : Оршихуй</Text>
 					</View>
-					<AudioControl />
+					<AudioControl
+						bookPlayer={true}
+					/>
 					<View style={styles.listContainer} >
-						<Text style={styles.listTitle} >Бусад дугаарууд</Text>
+						<Text style={styles.listTitle} >Бүлгүүд</Text>
 						<FlatList
 							data={episodes}
 							renderItem={({item}) => (
-								<PodcastEpisode name={item} />
+								<ChapterList name={item} />
 							)}
 						/>
 					</View>
@@ -39,6 +48,16 @@ export default function PodcastPlayerScreen ({ navigation }) {
 }
 
 let styles = StyleSheet.create({
+	
+	chapter: {
+		paddingVertical: 10 
+	},
+	
+	innerChapter: {
+		color: 'white',
+		fontSize: 18 
+	},
+	
 	container: {
 		width: '100%',
 		height: '100%',
@@ -69,7 +88,7 @@ let styles = StyleSheet.create({
 	},
 	
 	image: {
-		width: screenHeight * 0.25,
+		width: screenHeight * 0.25 * 6/9,
 		height: screenHeight * 0.25,
 		borderRadius: 5,
 		resizeMode: 'cover',
@@ -83,7 +102,7 @@ let styles = StyleSheet.create({
 	},
 	
 	episodeName: {
-		color: 'grey',
+		color: 'white',
 		fontSize: 18 
 	},
 

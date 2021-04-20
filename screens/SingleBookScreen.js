@@ -13,6 +13,9 @@ export default function SingleBookScreen({ navigation }) {
 				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
 					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
 				</TouchableOpacity>
+				<TouchableOpacity style={styles.backButton} onPress={() => navigation.push('bookPlayerScreen')} >
+					<MaterialCommunityIcons name="chevron-right" color={'white'} size={46} />
+				</TouchableOpacity>
 				<View style={styles.innerContainer} >
 					<View style={styles.top} >
 						<Image style={styles.bookImage} source={require('../assets/book-1.png')} />
@@ -67,7 +70,6 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
-		paddingTop: 30
 	},
 	
 	innerContainer: {
@@ -77,8 +79,8 @@ let styles = StyleSheet.create({
 	},
 	
 	bookImage: {
-		width: 150,
 		borderRadius: 5,
+		width: 150,
 		height: 150 * 9/6,
 		resizeMode: 'cover',
 	},
