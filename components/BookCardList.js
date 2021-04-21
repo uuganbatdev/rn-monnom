@@ -172,7 +172,7 @@ let data = [
 		key: '29' 
 	},
 ]
-export default function BookCardList ({ title, titleColor }) {
+export default function BookCardList ({ title, titleColor,  }) {
 	let [ bookList, setBookList ] = useState();
 	useEffect(() => {
 		setBookList(data)
@@ -186,6 +186,7 @@ export default function BookCardList ({ title, titleColor }) {
 				</Text>
 			</View>
 				<FlatList 
+					nestedScrollEnabled={true}
 					data={bookList}
 					renderItem={({ item }) => (
 						<BookCard 

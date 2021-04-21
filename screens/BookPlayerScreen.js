@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList, ScrollView } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from 'react-native-slider';
 
@@ -21,7 +21,7 @@ let ChapterList = () => {
 export default function BookPlayerScreen ({ navigation }) {
 
 	return (
-			<View style={styles.container}>
+			<View style={styles.container} >
 				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
 					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
 				</TouchableOpacity>
@@ -36,6 +36,7 @@ export default function BookPlayerScreen ({ navigation }) {
 					<View style={styles.listContainer} >
 						<Text style={styles.listTitle} >Бүлгүүд</Text>
 						<FlatList
+							nestedScrollEnabled={true}
 							data={episodes}
 							renderItem={({item}) => (
 								<ChapterList name={item} />
@@ -49,6 +50,13 @@ export default function BookPlayerScreen ({ navigation }) {
 
 let styles = StyleSheet.create({
 	
+	container: {
+		width: '100%',
+		height: '100%',
+		backgroundColor: '#0F191E',
+	},
+	
+	
 	chapter: {
 		paddingVertical: 10 
 	},
@@ -56,12 +64,6 @@ let styles = StyleSheet.create({
 	innerChapter: {
 		color: 'white',
 		fontSize: 18 
-	},
-	
-	container: {
-		width: '100%',
-		height: '100%',
-		backgroundColor: '#0F191E',
 	},
 	
 	listContainer: {

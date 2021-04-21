@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { globalStyle } from '../Style';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -23,7 +24,7 @@ export default function BookCard({ author, bookName, bookImageSource }) {
 	return (
 			<TouchableOpacity style={styles.container} onPress={openSingleBook}>
 				<Image style={styles.bookImage} source={bookImageSource} />
-				<Text style={styles.bookNameText} >
+				<Text style={globalStyle.mainTextRed} >
 					{bookName}
 				</Text>
 				<Text style={styles.authorText} >

@@ -15,9 +15,6 @@ export default function SingleBookScreen({ navigation }) {
 				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
 					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.backButton} onPress={() => navigation.push('bookPlayerScreen')} >
-					<MaterialCommunityIcons name="chevron-right" color={'white'} size={46} />
-				</TouchableOpacity>
 				<View style={styles.innerContainer} >
 					<View style={styles.top} >
 						<Image style={styles.bookImage} source={require('../assets/book-1.png')} />
@@ -34,15 +31,15 @@ export default function SingleBookScreen({ navigation }) {
 							Худалдагдсан тоо: 103
 						</Text>
 						<View style={styles.iconsContainer} >
-							<View style={styles.iconContainer} >
+							<TouchableOpacity style={styles.iconContainer} onPress={() => navigation.push('bookPlayerScreen')}>
 								<MaterialCommunityIcons name={'music-note'} color={'#DE5246'} size={25} />
-							</View>
-							<View style={styles.iconContainer}>
+							</TouchableOpacity>
+							<TouchableOpacity style={styles.iconContainer}>
 								<MaterialCommunityIcons name={'eye'} color={'#DE5246'} size={25} />
-							</View>
-							<View style={styles.iconContainer}>
+							</TouchableOpacity>
+							<TouchableOpacity style={styles.iconContainer} onPress={() => navigation.push('buyBookScreen')}>
 								<MaterialCommunityIcons name={'layers'} color={'#DE5246'} size={25} />
-							</View>
+							</TouchableOpacity>
 						</View>
 					</View>
 					<View style={styles.bookIntro} >
@@ -75,8 +72,7 @@ export default function SingleBookScreen({ navigation }) {
 
 let styles = StyleSheet.create({
 	container: {
-		width: '100%',
-		height: '100%',
+		flex: 1,
 		backgroundColor: '#0F191E',
 	},
 	
