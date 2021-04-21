@@ -23,6 +23,7 @@ import ProfileScreen from './screens/ProfileScreen.js';
 import PodcastPlayerScreen from './screens/PodcastPlayerScreen.js';
 import BookPlayerScreen from './screens/BookPlayerScreen.js';
 import BuyBookScreen from './screens/BuyBookScreen.js';
+import BuyBookScreenTwo from './screens/BuyBookScreenTwo.js';
 
 import { AuthContextProvider } from './contexts/AuthContext.js';
 import { useGlobalContext } from './contexts/GlobalContext'
@@ -169,6 +170,7 @@ export default RootStackScreen = ({ navigation }) => {
 							<RootStack.Screen name="podcastPlayerScreen" component={PodcastPlayerScreen} />
 							<RootStack.Screen name="bookPlayerScreen" component={BookPlayerScreen} />
 							<RootStack.Screen name="buyBookScreen" component={BuyBookScreen} />
+							<RootStack.Screen name="buyBookScreenTwo" component={BuyBookScreenTwo} />
 						</>
 					) 
 					: <RootStack.Screen name='authScreens' component={AuthStackScreen} />

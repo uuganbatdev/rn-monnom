@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BuyInput from '../components/BuyInput';
+let {width: screenWidth} = Dimensions.get('window');
 
 export default function BuyBookScreen ({ navigation }) {
-	let [ city, setCity ] = useState('');
-	let [ area, setArea ] = useState('');
-	let [ street, setStreet ] = useState('');
-	let [ address, setAddress ] = useState('');
 
 	return (
 			<ScrollView style={styles.container}>
@@ -23,37 +20,50 @@ export default function BuyBookScreen ({ navigation }) {
 					</View>
 					<View style={styles.stepContainer} >
 						<View style={styles.stepTop} >
+							<View style={styles.step} ></View>
+							<View style={styles.line} ></View>
 							<View style={styles.step} >
 								<View style={styles.innerStepOne} ></View>
 							</View>
-							<View style={styles.line} ></View>
-							<View style={styles.step} >
-							</View>
 						</View>
 						<View style={styles.stepBottom} >
-							<Text style={styles.stepTextActive} >Хаяг оруулах</Text>
-							<Text style={styles.stepText} >Төлбөр төлөлт</Text>
+							<Text style={styles.stepText} >Хаяг оруулах</Text>
+							<Text style={styles.stepTextActive} >Төлбөр төлөлт</Text>
 						</View>
 					</View>
-					<BuyInput
-						title={'Хот'}
-						setState={setCity}
-					/>
-					<BuyInput
-						title={'Дүүрэг'}
-						setState={setArea}
-					/>
-					<BuyInput
-						title={'Гудамж'}
-						setState={setStreet}
-					/>
-					<BuyInput
-						title={'Xороо/тоот'}
-						setState={setAddress}
-					/>
+					<View style={styles.main} >
+						<View style={styles.addressContainer} >
+							<View style={styles.innerAddress} >
+								<Text style={styles.addressTitle} >Хүргүүлэх хаяг</Text>
+								<View style={styles.checkIconContainer} >
+									<MaterialCommunityIcons name={'check'} color={'#DE5246'} size={15} />
+								</View>
+							</View>
+							<Text style={styles.address} >
+								Ulaanbaatar, 13р хороолол, 10р хороо 52р байр 98 тоот
+							</Text>
+							<View style={styles.contentContainer} >
+								<Image style={styles.contentImage} source={require('../assets/book-1.png')} />
+								<View style={styles.contentDetails} >
+									<View style={styles.detail} >
+										<Text style={styles.detailTitle} >Нэр:</Text>
+										<Text style={styles.detailText}>Ногоон нүдэн лам</Text>
+									</View>
+									<View style={styles.detail} >
+										<Text style={styles.detailTitle} >Зохиогч:</Text>
+										<Text style={styles.detailText}>Ц. Оюунгэрэл</Text>
+									</View>
+									<View style={styles.detail} >
+										<Text style={styles.detailTitle} >Үнэ:</Text>
+										<Text style={styles.detailText}>17'900₮</Text>
+									</View>
+								</View>
+							</View>
+						</View>
+					</View>
 					<TouchableOpacity style={styles.continueButton} onPress={() => navigation.push('buyBookScreenTwo')}>
 						<Text style={styles.redText} >
-							Үргэлжлүүлэх
+							Худалдан авах
 						</Text>
 					</TouchableOpacity>
 				</View>
@@ -68,6 +78,58 @@ let styles = StyleSheet.create({
 		height: '100%',
 		backgroundColor: '#0F191E',
 		paddingTop: 30,
+	},
+	
+	checkIconContainer: {
+		padding: 5,
+		borderRadius: 100,
+		backgroundColor: 'white',
+	},
+	
+	address: {
+		color: 'white',
+		width: '80%'
+	},
+	
+	addressTitle: {
+		color: 'white'
+	},
+	
+	innerAddress: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		width: '80%',
+		marginBottom: 15
+	},
+	
+	contentContainer: {
+		flexDirection: 'row',
+		paddingVertical: 30
+	},
+	
+	contentDetails: {
+		paddingHorizontal: 15,
+	},
+	
+	detail: {
+		marginBottom: 15
+	},
+	
+	detailTitle: {
+		color: '#DE5246',
+	},
+	
+	detailText: {
+		color: 'white',
+		width: '80%',
+		fontSize: 20
+	},
+	
+	contentImage: {
+		width: screenWidth * 0.9 * 0.5,
+		height: screenWidth * 0.9 * 0.5 * 9/6,
+		resizeMode: 'cover',
+		borderRadius: 5,
 	},
 	
 	backButton: {
