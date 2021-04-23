@@ -54,7 +54,6 @@ let styles = StyleSheet.create({
 		paddingTop: 10,
 	},
 	
-	
 	backButton: {
 		right: 16,
 	},

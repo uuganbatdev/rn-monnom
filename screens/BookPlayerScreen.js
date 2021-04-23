@@ -21,30 +21,29 @@ let ChapterList = () => {
 export default function BookPlayerScreen ({ navigation }) {
 
 	return (
-			<View style={styles.container} >
-				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
-					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
-				</TouchableOpacity>
-				<View style={styles.innerContainer} >
-					<View style={styles.episodeDetails} >
-						<Image style={styles.image} source={require('../assets/book-1.png')} />
-						<Text style={styles.episodeName} numberOfLines={1}>Бүлэг 1 : Оршихуй</Text>
-					</View>
-					<AudioControl
-						bookPlayer={true}
-					/>
-					<View style={styles.listContainer} >
+		<View style={styles.container} >
+			<FlatList
+				style={styles.innerContainer} 
+				showsVerticalScrollIndicator={false}
+				data={episodes}
+				renderItem={({item}) => (
+					<ChapterList name={item} />
+				)}
+				ListHeaderComponent={
+					<>
+						<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
+							<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
+						</TouchableOpacity>
+						<View style={styles.episodeDetails} >
+							<Image style={styles.image} source={require('../assets/book-1.png')} />
+							<Text style={styles.episodeName} numberOfLines={1}>Бүлэг 1 : Оршихуй</Text>
+						</View>
+						<AudioControl bookPlayer={true} />
 						<Text style={styles.listTitle} >Бүлгүүд</Text>
-						<FlatList
-							nestedScrollEnabled={true}
-							data={episodes}
-							renderItem={({item}) => (
-								<ChapterList name={item} />
-							)}
-						/>
-					</View>
-				</View>
-			</View>
+					</>
+				}
+			/>
+		</View>
 	)
 }
 
@@ -54,6 +53,7 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
+		alignItems: 'center'
 	},
 	
 	
@@ -61,6 +61,10 @@ let styles = StyleSheet.create({
 		paddingVertical: 10 
 	},
 	
+	backButton: {
+		right: 16,
+	},
+
 	innerChapter: {
 		color: 'white',
 		fontSize: 18 
@@ -73,6 +77,7 @@ let styles = StyleSheet.create({
 	},
 	
 	listTitle: {
+		width: '100%',
 		color: 'white',
 		fontSize: 20,
 		marginBottom: 10,
@@ -80,9 +85,6 @@ let styles = StyleSheet.create({
 	
 	innerContainer: {
 		width: '90%',
-		flex: 1,
-		alignSelf: 'center',
-		alignItems: 'center'
 	},
 	
 	episodeDetails: {
