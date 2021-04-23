@@ -13,28 +13,30 @@ let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8
 export default function PodcastPlayerScreen ({ navigation }) {
 
 	return (
-			<View style={styles.container}>
-				<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
-					<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
-				</TouchableOpacity>
-				<View style={styles.innerContainer} >
-					<View style={styles.episodeDetails} >
-						<Image style={styles.image} source={require('../assets/podcast-1.png')} />
-						<Text style={styles.podcastName} numberOfLines={1}>Ideree's Podcast</Text>
-						<Text style={styles.episodeName} numberOfLines={1}>Episode 66: Lodoisambuu. Ulaanbal</Text>
-					</View>
-					<AudioControl />
-					<View style={styles.listContainer} >
+		<View style={styles.container} >
+			<FlatList
+				style={styles.innerContainer} 
+				showsVerticalScrollIndicator={false}
+				data={episodes}
+				renderItem={({item}) => (
+					<PodcastEpisode name={item} />
+				)}
+				ListHeaderComponent={
+					<>
+						<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
+							<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
+						</TouchableOpacity>
+						<View style={styles.episodeDetails} >
+							<Image style={styles.image} source={require('../assets/podcast-1.png')} />
+							<Text style={styles.podcastName} numberOfLines={1}>Ideree's Podcast</Text>
+							<Text style={styles.episodeName} numberOfLines={1}>Episode 66: Lodoisambuu. Ulaanbal</Text>
+						</View>
+						<AudioControl />
 						<Text style={styles.listTitle} >Бусад дугаарууд</Text>
-						<FlatList
-							data={episodes}
-							renderItem={({item}) => (
-								<PodcastEpisode name={item} />
-							)}
-						/>
-					</View>
-				</View>
-			</View>
+					</>
+				}
+			/>
+		</View>
 	)
 }
 
@@ -43,6 +45,7 @@ let styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#0F191E',
+		alignItems: 'center'
 	},
 	
 	listContainer: {
@@ -51,7 +54,13 @@ let styles = StyleSheet.create({
 		paddingTop: 10,
 	},
 	
+	
+	backButton: {
+		right: 16,
+	},
+	
 	listTitle: {
+		width: '100%',
 		color: 'white',
 		fontSize: 20,
 		marginBottom: 10,
@@ -59,9 +68,6 @@ let styles = StyleSheet.create({
 	
 	innerContainer: {
 		width: '90%',
-		flex: 1,
-		alignSelf: 'center',
-		alignItems: 'center'
 	},
 	
 	episodeDetails: {

@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import PodcastEpisodesTab from '../components/PodcastEpisodesTab';
 
 export default function PodcastEpisode ({ name }) {
 	let navigation = useNavigation();
