@@ -1,4 +1,6 @@
 import React, {useEffect} from 'react';
+
+// screens
 import SignInScreen from './screens/authScreens/SignInScreen.js';
 import RequestResetPasswordScreen from './screens/authScreens/RequestResetPasswordScreen.js';
 import SignUpScreen from './screens/authScreens/SignUpScreen.js';
@@ -25,6 +27,7 @@ import BookPlayerScreen from './screens/BookPlayerScreen.js';
 import BuyBookScreen from './screens/BuyBookScreen.js';
 import BuyBookScreenTwo from './screens/BuyBookScreenTwo.js';
 
+// context  providers
 import { AuthContextProvider } from './contexts/AuthContext.js';
 import { useGlobalContext } from './contexts/GlobalContext'
 

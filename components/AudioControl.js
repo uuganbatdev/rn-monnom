@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -6,22 +6,37 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import Slider from 'react-native-slider';
+import { useAudio } from '../contexts/AudioPlayerContext';
 
 const {width: screenWidth} = Dimensions.get('window');
 
 export default function AudioControl({ bookPlayer }) {
-	let [ sliderValue, setSliderValue ] = useState(0);
-	let [ soundSliderValue, setSoundSliderValue ] = useState(0);
+	let { sound, play, pause, changeVolumeTo } = useAudio();
+	let [ volumeSliderValue, setVolumeSliderValue ] = useState(0.6);
+	let [ isPlaying, setIsPlaying ] = useState();
+	let volumeSlider = useRef();
+
+	let handleVolumeChange = (volume) => {
+		changeVolumeTo(volume);
+	}
+
+	let handlePositionChange = (position) => {
+	}
+	useEffect(() => {
+	},[])
 
 	return (
 		<View style={styles.container} >
 			<Slider
-				value={sliderValue}
-				onValueChange={(value) => setSliderValue(value)}
+				value={0}
+				onValueChange={handlePositionChange}
 				width={screenWidth * 0.9}
+				animationType={'spring'}
 				thumbTintColor={'white'}
 				minimumTrackTintColor={'#DE5246'}
 				maximumTrackTintColor={'#DE5246'}
+				onSlidingComplete={e => console.log(e)}
+				thumbTouchSize={{ width: 50, height: 50 }}
 			/>
 			<View style={styles.controller} >
 				{
@@ -38,8 +53,11 @@ export default function AudioControl({ bookPlayer }) {
 				<TouchableOpacity style={styles.iconContainer} >
 					<MaterialIcons name="rotate-left" color={'white'} size={25} />
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.midIconContainer} >
+				<TouchableOpacity style={styles.midIconContainer} onPress={play} >
 					<FontAwesome name="play" color={'white'} size={25} />
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.midIconContainer} onPress={pause} >
+					<FontAwesome name="pause" color={'white'} size={25} />
 				</TouchableOpacity>
 				<TouchableOpacity style={styles.iconContainer} >
 					<MaterialIcons name="rotate-right" color={'white'} size={25} />
@@ -59,12 +77,14 @@ export default function AudioControl({ bookPlayer }) {
 			<View style={styles.soundSliderContainer} >
 				<MaterialCommunityIcons name="volume-medium" color={'#DE5246'} size={25} />
 				<Slider
-					value={soundSliderValue}
-					onValueChange={(value) => setSoundSliderValue(value)}
+					ref={volumeSlider}
+					onValueChange={handleVolumeChange}
 					width={screenWidth * 0.65}
 					thumbTintColor={'white'}
 					minimumTrackTintColor={'#DE5246'}
 					maximumTrackTintColor={'#DE5246'}
+					step={0.05}
+				thumbTouchSize={{ width: 50, height: 50 }}
 				/>
 				<MaterialCommunityIcons name="volume-high" color={'#DE5246'} size={25} />
 			</View>

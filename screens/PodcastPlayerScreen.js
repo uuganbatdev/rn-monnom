@@ -1,41 +1,64 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList, ActivityIndicator } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Slider from 'react-native-slider';
-
 import AudioControl from '../components/AudioControl.js';
 import PodcastEpisodesTab from '../components/PodcastEpisodesTab.js';
 import PodcastEpisode from '../components/PodcastEpisode.js';
+
+import { useAudio } from '../contexts/AudioPlayerContext';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 let episodes = [ 1,2,3,4,5,6,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8 ];
 
 export default function PodcastPlayerScreen ({ navigation }) {
+	let { sound, playSound } = useAudio();
+	let [ loadedSound, setLoadedSound ] = useState(false);
+
+	useEffect(() => {
+		playSound('https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3');
+	},[])
+
+	useEffect(() => {
+		if (sound) {
+			setLoadedSound(true);
+		}
+	},[sound])
 
 	return (
 		<View style={styles.container} >
-			<FlatList
-				style={styles.innerContainer} 
-				showsVerticalScrollIndicator={false}
-				data={episodes}
-				renderItem={({item}) => (
-					<PodcastEpisode name={item} />
-				)}
-				ListHeaderComponent={
-					<>
-						<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
-							<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
-						</TouchableOpacity>
-						<View style={styles.episodeDetails} >
-							<Image style={styles.image} source={require('../assets/podcast-1.png')} />
-							<Text style={styles.podcastName} numberOfLines={1}>Ideree's Podcast</Text>
-							<Text style={styles.episodeName} numberOfLines={1}>Episode 66: Lodoisambuu. Ulaanbal</Text>
-						</View>
-						<AudioControl />
-						<Text style={styles.listTitle} >Бусад дугаарууд</Text>
-					</>
-				}
-			/>
+			{loadedSound ?  (
+						<FlatList
+							style={styles.innerContainer} 
+							showsVerticalScrollIndicator={false}
+							data={episodes}
+							renderItem={({item}) => (
+								<PodcastEpisode name={item} />
+							)}
+							ListHeaderComponent={
+								<>
+									<TouchableOpacity style={styles.backButton} onPress={() => navigation.pop()} >
+										<MaterialCommunityIcons name="chevron-left" color={'white'} size={46} />
+									</TouchableOpacity>
+									<View style={styles.episodeDetails} >
+										<Image style={styles.image} source={require('../assets/podcast-1.png')} />
+										<Text style={styles.podcastName} numberOfLines={1}>Ideree's Podcast</Text>
+										<Text style={styles.episodeName} numberOfLines={1}>Episode 66: Lodoisambuu. Ulaanbal</Text>
+									</View>
+									<AudioControl />
+									<Text style={styles.listTitle} >Бусад дугаарууд</Text>
+								</>
+							}
+						/>
+					)
+					: (
+						<ActivityIndicator
+							style={styles.activityIndicator}
+							size='large'
+							color='#DE5246'
+						/>
+					)
+			}
 		</View>
 	)
 }
@@ -46,6 +69,10 @@ let styles = StyleSheet.create({
 		height: '100%',
 		backgroundColor: '#0F191E',
 		alignItems: 'center'
+	},
+	
+	activityIndicator: {
+		flex: 1,
 	},
 	
 	listContainer: {

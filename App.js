@@ -4,15 +4,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import RootStackScreen from './navigationManager';
 import { GlobalContextProvider } from './contexts/GlobalContext';
+import { AudioPlayerContextProvider } from './contexts/AudioPlayerContext';
 
 
 export default function App() {
   return (
     <View style={styles.container}>
 		<GlobalContextProvider>
-			<NavigationContainer>
-				<RootStackScreen />
-			</NavigationContainer>
+			<AudioPlayerContextProvider>
+				<NavigationContainer>
+					<RootStackScreen />
+				</NavigationContainer>
+			</AudioPlayerContextProvider>
 		</GlobalContextProvider>
     </View>
   );

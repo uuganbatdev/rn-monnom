@@ -15,7 +15,6 @@ const tabOptions = {
 };
 
 export default function MyLibraryScreen() {
-
 	return (
 		<View style={styles.container}>
 			<MyLibraryHeader />

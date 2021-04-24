@@ -8,6 +8,13 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+	"ios": {
+		"infoPlist": {
+			"UIBackgroundModes": [
+				"audio"
+			]
+		}
+	},
 	"androidNavigationBar": {
 	  "visible": "sticky-immersive"
     },
